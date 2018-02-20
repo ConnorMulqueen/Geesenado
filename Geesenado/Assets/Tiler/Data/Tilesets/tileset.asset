@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c342f1eab08e84da5e574ce46c7cc1, type: 3}
+  m_Name: tileset
+  m_EditorClassIdentifier: 
+  Version: 1
+  Assets:
+  - _setID: -16234
+    _tileID: 1
+    Texture: {fileID: 2800000, guid: 78b10e38ca2992e4a85b8d22722d0e5e, type: 3}
+    Connections: 15
+    Collision: 00
+  - _setID: -16234
+    _tileID: 2
+    Texture: {fileID: 2800000, guid: 2a06b678a3c05c54697c5ffdd2524537, type: 3}
+    Connections: 0
+    Collision: 00
+  - _setID: -16234
+    _tileID: 3
+    Texture: {fileID: 2800000, guid: 3d3698d4168680947a6365deb07db80b, type: 3}
+    Connections: 0
+    Collision: 00
+  - _setID: -16234
+    _tileID: 4
+    Texture: {fileID: 2800000, guid: 3b8b665095b81b945a4a3127dfb03884, type: 3}
+    Connections: 0
+    Collision: 00
+  - _setID: -16234
+    _tileID: 6
+    Texture: {fileID: 2800000, guid: 6d6597732e64491448d6e42e65d7dc38, type: 3}
+    Connections: 0
+    Collision: 00
+  - _setID: -16234
+    _tileID: 7
+    Texture: {fileID: 2800000, guid: 33a1f8df218445f45b04c92ccbeaf98b, type: 3}
+    Connections: 0
+    Collision: 00
+  TileSize: 64
+  Collision: 1
+  TilesetID: -16234
+  _tileID: 7
