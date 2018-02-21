@@ -15,9 +15,6 @@ public class PlayableCharacter : Character {
 
     new public void movement()
     {
-        if (Input.GetKey(KeyCode.W)) //sample movement
-        {
-            _rb.AddForce(Vector2.up * _movementSpeed);
-        }
+        
     }
 }
