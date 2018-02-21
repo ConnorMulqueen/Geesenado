@@ -7,13 +7,13 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public class Pencil : MonoBehaviour, IWeapon
+    public class Pencil : MonoBehaviour, IPlayerWeapon
     {
         // Bodies
         public Rigidbody2D playerBody;
         public Rigidbody2D pencilBody;
-        public SpriteRenderer pencilSprite;
         public GameObject pencilPrefab;
+        public float lifetime = .25f;
 
         // Location
         float timeToFire = 0;
@@ -74,7 +74,6 @@ namespace Assets.Scripts
         {
             this.MaxAmmo = 1;
             this.Ammo = 1;
-            pencilBody.GetComponent<SpriteRenderer>().enabled = false;
             this.IsLive = false;
             this.Countdown = TIMEOUT;
             Physics2D.IgnoreCollision(playerBody.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
@@ -98,22 +97,20 @@ namespace Assets.Scripts
                 mousePosition.x - transform.position.x,
                 mousePosition.y - transform.position.y
             );
-            /*
-              transform.up = direction;
-              pencilBody.GetComponent<SpriteRenderer>().enabled = true;
 
-              */
             if (countdown <= 0)
             {
                 this.Countdown = TIMEOUT;
                 var pencilFab = (GameObject)Instantiate(
                     pencilPrefab,
                     playerBody.position,
-                    playerBody.transform.rotation
+                    playerBody.transform.rotation,
+                    playerBody.transform
                 );
-                pencilFab.GetComponent<Rigidbody2D>().transform.up = directionToMouse;
 
-                Destroy(pencilFab, .75f);
+                //transform.Translate((playerBody.transform.position - transform.position).normalized * 5 * Time.deltaTime);
+               
+                Destroy(pencilFab, lifetime);
             }
         }
 
@@ -121,16 +118,6 @@ namespace Assets.Scripts
         {
             if (isLive)
             {
-                /*
-                pencilBody.GetComponent<SpriteRenderer>().enabled = true;
-                Vector3 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                transform.position = Vector3.MoveTowards(
-                    transform.position,
-                    targetPos,
-                    5 * Time.deltaTime
-                );
-                
-                */
                 this.Countdown -= Time.deltaTime;
                 if (countdown <= 0)
                 {
@@ -140,7 +127,7 @@ namespace Assets.Scripts
                 }
             }
 
-            pencilBody.position = new Vector2(playerBody.position.x, playerBody.position.y);
+            pencilBody.position = playerBody.position;
 
         }
 

@@ -72,6 +72,7 @@ public class Paper : MonoBehaviour, IPlayerWeapon
     {
         maxAmmo = 100;
         ammo = 100;
+        Physics2D.IgnoreCollision(playerBody.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
     }
 
     void FixedUpdate()

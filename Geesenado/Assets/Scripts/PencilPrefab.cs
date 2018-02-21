@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PencilPrefab : MonoBehaviour
 {
-    public Rigidbody2D player;
-
     void Start()
     {
         Debug.Log("Hello");
@@ -20,9 +18,10 @@ public class PencilPrefab : MonoBehaviour
             mousePosition.x - transform.position.x,
             mousePosition.y - transform.position.y
         );
-
-        transform.Translate((player.transform.position - transform.position).normalized * 5 * Time.deltaTime);
-        transform.up = directionToMouse;
+        
+        //transform.up = directionToMouse;
+        transform.GetComponent<Rigidbody2D>().transform.up = directionToMouse;
+        transform.GetComponent<Rigidbody2D>().velocity = transform.up * 10;
     }
 }
 

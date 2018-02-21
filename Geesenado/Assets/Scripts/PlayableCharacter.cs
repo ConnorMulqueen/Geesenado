@@ -21,7 +21,7 @@ public class PlayableCharacter : Character {
         }
 
         // Setting Space Bar for Paper attack
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Fire2"))
         {
             paper.Fire();
         }
