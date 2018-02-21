@@ -1,0 +1,17 @@
+Geesenado Team Meeting Notes
+Location: Baldy 19
+Date: 2/20/18
+Attendance: James, Kevin, Matt, Jared (Connor: Excused Absence)
+Topics Discussed:
+-	GitHub collaboration
+-	Expectations for player and UI integration
+-	Prototype feel
+Summary:
+-	Merged Map and Character movement into the same branch (Feature)
+Tasks for Next Meeting:
+-	Jared: Finish Pencil.cs, Fix github issues
+-	James: Create Inventory for UI to grab information from
+-	Kevin: Continue to build map and add collisions to pre-existing objects
+-	Connor: ---
+-	Matt: HUD view and integration with character stats
+
