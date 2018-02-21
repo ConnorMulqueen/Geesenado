@@ -55,9 +55,9 @@ public class Paper : MonoBehaviour, IPlayerWeapon
                 transform.rotation
             );
 
-            paper.GetComponent<Rigidbody2D>().velocity = transform.up * 8;
+            paper.GetComponent<Rigidbody2D>().velocity = playerBody.transform.up * 8;
 
-            Destroy(paper, .5f);
+            Destroy(paper, .75f);
             this.Ammo--;
         }
         else
@@ -71,7 +71,7 @@ public class Paper : MonoBehaviour, IPlayerWeapon
     void Start()
     {
         maxAmmo = 100;
-        ammo = 20;
+        ammo = 100;
     }
 
     void FixedUpdate()
