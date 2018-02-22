@@ -14,23 +14,15 @@ public class HeartScript : MonoBehaviour {
 
     void Start()
     {
-        image1 = GetComponent<Image>();
-        image2 = GetComponent<Image>();
-        image3 = GetComponent<Image>();
-        image4 = GetComponent<Image>();
-        image5 = GetComponent<Image>();
-        //        image = GetComponent<Image>();
-        //        var tempColor = image.color;
-        //        tempColor.a = 1f;
-        //        image.color = tempColor;
+       
     }
 
     void Update () {
-        var tempColor1 = image1.color;
-        var tempColor2 = image2.color;
-        var tempColor3 = image3.color;
-        var tempColor4 = image4.color;
-        var tempColor5 = image5.color;
+        Color tempColor1 = image1.color;
+        Color tempColor2 = image2.color;
+        Color tempColor3 = image3.color;
+        Color tempColor4 = image4.color;
+        Color tempColor5 = image5.color;
 
         if (_player.getHealth() <= 40)
         {
