@@ -8952,7 +8952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 50
-  _movementSpeed: 0
+  _movementSpeed: 3
   _rb: {fileID: 0}
 --- !u!23 &2070871898
 MeshRenderer:
