@@ -13,7 +13,6 @@ public class Character : MonoBehaviour
     public void Start()
     {
         _health = 50;
-        _movementSpeed = 1f;
         _rb = GetComponent<Rigidbody2D>();
     }
 
