@@ -1,0 +1,18 @@
+Geesenado Team Meeting Notes
+Location: Baldy 19
+Date: 2/13/18
+Attendance: James, Connor, Kevin, Matt, Jared
+
+Topics Discussed:
+-	GitHub collaboration
+-	Expectations for player control
+Summary:
+-	We created proper branch structure in GitHub. Also, we pushed a starting Unity project to first Feature branch. 
+  This will allow us to work/branch off a base project in Unity.
+Tasks for Next Meeting:
+-	Jared: Pencil operates as a “joust” manner
+-	James: Basic keyboard (strafe) movement complete 
+-	Kevin: Starting point of the map. Basic walkway, possible one basic building.
+-	Connor: NPC’s move randomly and can take GPA damage.
+-	Matt: Main menu with working buttons and have non-working UI elements during gameplay drafted
+
