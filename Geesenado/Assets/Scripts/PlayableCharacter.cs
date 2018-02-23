@@ -5,6 +5,8 @@ using Assets.Scripts;
 public class PlayableCharacter : Character {
     public Pencil pencil;
     public Paper paper;
+
+
     new void Start()
     {
         base.Start();
