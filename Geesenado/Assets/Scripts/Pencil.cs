@@ -19,7 +19,7 @@ namespace Assets.Scripts
         float timeToFire = 0;
 
         // Timing
-        private static float TIMEOUT = .8f;
+        private static float TIMEOUT = .5f;
         private bool isLive;
         private float countdown;
 

@@ -8,7 +8,7 @@ public class Paper : MonoBehaviour, IPlayerWeapon
 {
 
     // Bodies
-    public Rigidbody2D playerBody;
+    public GameObject playerObject;
     public Rigidbody2D paperBody;
     public GameObject paperPrefab;
 
@@ -55,7 +55,8 @@ public class Paper : MonoBehaviour, IPlayerWeapon
                 transform.rotation
             );
 
-            paper.GetComponent<Rigidbody2D>().velocity = playerBody.transform.up * 8;
+            
+            paper.GetComponent<Rigidbody2D>().velocity = playerObject.GetComponent<Rigidbody2D>().transform.up * 8;
 
             Destroy(paper, .75f);
             this.Ammo--;
@@ -72,12 +73,12 @@ public class Paper : MonoBehaviour, IPlayerWeapon
     {
         maxAmmo = 100;
         ammo = 100;
-        Physics2D.IgnoreCollision(playerBody.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
+        Physics2D.IgnoreCollision(playerObject.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
     }
 
     void FixedUpdate()
     {
-        transform.position = playerBody.position;
+        transform.position = playerObject.GetComponent<Rigidbody2D>().position;
     }
 }
 

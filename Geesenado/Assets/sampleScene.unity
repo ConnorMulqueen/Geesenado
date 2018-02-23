@@ -8863,7 +8863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ead676a405d86df4da0ad9c6d80e7b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerBody: {fileID: 675961090}
+  playerObject: {fileID: 675961087}
   paperBody: {fileID: 2000399093}
   paperPrefab: {fileID: 1688211475131586, guid: 2bf6b13f7da0d954794de8c29c1c33f5,
     type: 2}
