@@ -9291,7 +9291,7 @@ MonoBehaviour:
   pencilBody: {fileID: 1807235008}
   pencilPrefab: {fileID: 1733749815680708, guid: 09babe459d9ba6548bc05d97aa87b8a5,
     type: 2}
-  lifetime: 0.25
+  lifetime: 0.1
 --- !u!4 &1807235010
 Transform:
   m_ObjectHideFlags: 0
