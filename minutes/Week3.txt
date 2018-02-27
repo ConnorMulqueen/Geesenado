@@ -1,0 +1,20 @@
+Geesenado Team Meeting Notes
+Location: Baldy 19
+Date: 2/27/18
+Attendance: Connor, Kevin, Jared (James: Excused Absence)
+-	
+Tasks since last meeting:
+-	Filmed video
+-	Finished prototype requirements
+Topics Discussed:
+-	Alpha release responsibilities
+-	Cleanup branches
+-	Spawn points and Weapon integration
+
+Summary: Talked about how to approach the alpha development phase.
+
+Tasks for Next Meeting:
+-	Jared: Make new weapons. (1 charged  ranged, 1 sweep melee, update pencil)
+-	James: Character Inventory handling
+-	Kevin: Continue to building and start looking into spawn point logic
+-	Connor: Change NPC prototype movement to react to player
