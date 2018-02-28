@@ -9,20 +9,31 @@ public class Cursor : MonoBehaviour {
     public Rigidbody2D playerBody;
 
     // Class Objects
+    float weaponFireDistance = 7.3f; // Default is paper shot length
 
     // Use this for initialization
     void Start () {
-	}
+        cursorBody.position = playerBody.position;
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        Vector2 mousePosition;
-        mousePosition = Input.mousePosition;
+        Vector2 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
         Vector2 vectorFromPlayer = cursorBody.position - playerBody.position;
-        float distanceFromPlayer = vectorFromPlayer.magnitude;
-        cursorBody.position = new Vector2(mousePosition.x - playerBody.position.x, mousePosition.y - playerBody.position.y);
+        Vector2 vectorFromMouse = cursorBody.position - mousePosition;
 
+        float distanceFromPlayer = vectorFromPlayer.magnitude;
+
+        if (distanceFromPlayer >= 7.3f)
+        {
+            cursorBody.transform.position = 
+                new Vector2((playerBody.position.x + 7.3f)  , (playerBody.position.y + 7.3f));
+        }
+        else
+        {
+            cursorBody.transform.position = mousePosition;
+        }
     }
 }
