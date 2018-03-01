@@ -103,7 +103,7 @@ namespace Assets.Scripts
                 this.Countdown = TIMEOUT;
                 var pencilFab = (GameObject)Instantiate(
                     pencilPrefab,
-                    playerBody.position + new Vector2(playerBody.position.x+5f, playerBody.position.y+ 5f),
+                    playerBody.position,
                     playerBody.transform.rotation,
                     playerBody.transform
                 );
