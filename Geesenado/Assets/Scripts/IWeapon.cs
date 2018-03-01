@@ -1,7 +1,7 @@
 ﻿using Helpers;
 using UnityEngine;
 
-public interface IWeapon
+public interface IWeapon : IHoldable
 {
 
     /* --------- NOTES --------
