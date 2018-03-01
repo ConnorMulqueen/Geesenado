@@ -531,7 +531,7 @@ TilemapRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: e0e77993e5e4baa4e939cf17a24d1ccb, type: 2}
+  - {fileID: 2100000, guid: fecef4a3e8012bd47bfcfef1a00f38bc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8554,6 +8554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reticleBody: {fileID: 990409691}
   playerBody: {fileID: 675961090}
+  weaponFireDistance: 7.3
 --- !u!50 &990409691
 Rigidbody2D:
   serializedVersion: 4
