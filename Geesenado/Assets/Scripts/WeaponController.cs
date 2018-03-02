@@ -19,6 +19,7 @@ public class WeaponController : MonoBehaviour {
     public GameObject playerObject;
     public Paper paper;
     public Pencil pencil;
+    public Textbook textbook;
 
     // Local
     // item at position 0 of list will be fired
@@ -32,23 +33,26 @@ public class WeaponController : MonoBehaviour {
 	void Start () {
         ranged = new List<IHoldable>();
         ranged.Add(paper);
+        ranged.Add(textbook);
 
         melee = new List<IHoldable>();
         melee.Add(pencil);
 	}
 	
 	void Update () {
-        // Setting Mouse Left Click for Pencil attack
+        // Setting Mouse Left Click for MELEE attack
         if (Input.GetButtonDown("Fire1") || Input.GetMouseButton(0))
         {
             ((IWeapon) melee[0]).Fire();
         }
 
-        // Setting Space Bar for Paper attack
+        // Setting Space Bar or Right Click for RANGED attack
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Fire2"))
         {
-            ((IWeapon)ranged[0]).Fire();
+            ((IWeapon) ranged[0]).Fire();
         }
+
+        // Toggle Functionality
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             Debug.Log("Toggled Ranged Weapons");
