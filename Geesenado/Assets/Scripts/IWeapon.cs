@@ -1,7 +1,7 @@
 ﻿using Helpers;
 using UnityEngine;
 
-public interface IWeapon
+public interface IWeapon : IHoldable
 {
 
     /* --------- NOTES --------
@@ -26,4 +26,6 @@ public interface IWeapon
      * Has the ability to be boosted by character ability.</summary>
      */
     float Damage { get; set; }
+
+    void Fire(float damagePoints=0f, Constants.DamageType damageType=Constants.DamageType.Static);
 }

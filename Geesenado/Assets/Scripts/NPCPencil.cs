@@ -35,6 +35,12 @@ namespace Assets.Scripts
             Physics2D.IgnoreCollision(npcBody.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
         }
 
+        public void Fire(float damagePoints = 0.1f, Constants.DamageType damageType = Constants.DamageType.Static)
+        {
+            // Call the overloaded Fire function
+            Fire(damagePoints,damageType,new Vector2());
+        }
+
         /**
          * <summary>Spawns a new pencil object in 
          * the direction of that the character is facing</summary>

@@ -14,6 +14,7 @@ public class Paper : MonoBehaviour, IPlayerWeapon
 
     private int ammo;
     private int maxAmmo;
+    private int MAX_FIREPOWER = 10;
 
     private static float TIMEOUT = 3f;
     private float countdown;
@@ -56,7 +57,8 @@ public class Paper : MonoBehaviour, IPlayerWeapon
             );
 
             
-            paper.GetComponent<Rigidbody2D>().velocity = playerObject.GetComponent<Rigidbody2D>().transform.up * 10;
+            paper.GetComponent<Rigidbody2D>().velocity = playerObject.GetComponent<Rigidbody2D>().transform.up * MAX_FIREPOWER +
+                    new Vector3(playerObject.GetComponent<Rigidbody2D>().velocity.x, playerObject.GetComponent<Rigidbody2D>().velocity.y);
 
             Destroy(paper, .75f);
             this.Ammo--;

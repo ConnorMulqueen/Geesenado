@@ -13,7 +13,7 @@ namespace Assets.Scripts
         public Rigidbody2D playerBody;
         public Rigidbody2D pencilBody;
         public GameObject pencilPrefab;
-        public float lifetime = .25f;
+        public float lifetime = .1f;
 
         // Location
         float timeToFire = 0;
