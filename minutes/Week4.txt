@@ -1,0 +1,24 @@
+Geesenado Team Meeting Notes
+Location: Baldy 19
+Date: 3/06/18
+Attendance: Connor, Kevin, Jared, James
+	
+Tasks since last meeting:
+-	NPC chases player if in range (Connor)
+-	Textbook weapon implementation (Jared)
+-	Sprites for current weapons (Jared)
+-	Started Health UI (James)
+-	Started North Campus tilemap (Kevin)
+
+Topics Discussed:
+-	Creating sprite art (www.piskelapp.com)
+-	CSE115 student feedback
+-	Building an indoor/outdoor map system
+
+Summary: Talked about student feedback and what steps we should take to prepare to implement their feedback into our product. Also discussed our progress as we get closer to the Alpha deadline.
+
+Tasks for Next Meeting:
+-	Jared: The next melee weapon for player and a paper weapon for NPC
+-	James: Finish UI Health bar, finish inventory, try looking into stamina bar
+-	Kevin: Continue building North Campus, Look into Geesenado
+-	Connor: NPCs dodge attacks, Create Jesse and Alphonce Sprites
