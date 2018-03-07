@@ -11,7 +11,7 @@ namespace Assets.Scripts
     {
         // Bodies
         public Rigidbody2D npcBody;
-        public Rigidbody2D pencilBody;
+        public Rigidbody2D npcPencilBody;
         public SpriteRenderer pencilSprite;
 
         // Location
@@ -29,7 +29,7 @@ namespace Assets.Scripts
 
         public void Start()
         {
-            pencilBody.GetComponent<SpriteRenderer>().enabled = false;
+            npcPencilBody.GetComponent<SpriteRenderer>().enabled = false;
             this.IsLive = false;
             this.Countdown = TIMEOUT;
             Physics2D.IgnoreCollision(npcBody.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
@@ -53,12 +53,13 @@ namespace Assets.Scripts
             Vector2 fireToPoint = new Vector2()
         )
         {
+            Debug.Log("NPC PECNIL FIRE");
             // Load the fire to point into the global variable
             targetPos = fireToPoint;
 
             // Enable the pencil to be  live
             this.isLive = true;
-            pencilBody.GetComponent<SpriteRenderer>().enabled = true;
+            npcPencilBody.GetComponent<SpriteRenderer>().enabled = true;
 
             // Set the up direction of the NPCPencil to be the same as the NPCs 
             Vector2 direction = npcBody.transform.up;
@@ -84,13 +85,13 @@ namespace Assets.Scripts
                     // Time's up, reset counter, isLive tag, and position
                     isLive = false;
                     this.Countdown = TIMEOUT;
-                    pencilBody.position = new Vector2(npcBody.position.x, npcBody.position.y);
+                    npcPencilBody.position = new Vector2(npcBody.position.x, npcBody.position.y);
                 }
             }
             else
             {
-                pencilBody.position = new Vector2(npcBody.position.x, npcBody.position.y);
-                pencilBody.GetComponent<SpriteRenderer>().enabled = false;
+                npcPencilBody.position = new Vector2(npcBody.position.x, npcBody.position.y);
+                npcPencilBody.GetComponent<SpriteRenderer>().enabled = false;
             }
         }
 
