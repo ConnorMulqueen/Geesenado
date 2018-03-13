@@ -1,0 +1,19 @@
+Geesenado Team Meeting Notes
+Location: Baldy 19
+Date: 3/06/18
+Attendance: Connor, Kevin, Jared(excused absence), James(excused absence)
+	
+Tasks since last meeting:
+-	NPC dodge attempt if paper is close (Connor)
+-	Created spine walkway of the campus (Kevin)
+
+Topics Discussed:
+-	Due date delayed
+-	Jared out of town for week
+-	James no internet connection for spring break
+-	How to make our alpha more impressive given that we have an additional week
+
+Summary: Talked about how we will use our time 
+Tasks for Next Meeting
+-	Kevin: Finish building the spine and start adding building rooftops, attempt to get Geesenado by the end of alpha.
+-	Connor: Character Select Screen with face sprites of Jesse, Alphonce
