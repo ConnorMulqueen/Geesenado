@@ -9,28 +9,33 @@ public class TempNPCCntrl : MonoBehaviour {
     public GameObject playerObject;
 
     // Timing
-    float countdown;
+    float pencilCountdown;
+    float paperCountdown;
 
 
 	// Use this for initialization
 	void Start () {
-        countdown = 10f;
+        pencilCountdown = 10f;
+        paperCountdown = 4f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if(countdown <= 0)
+        if(pencilCountdown <= 0)
         {
-            // Fire a weapon
+            // Fire pencil weapon
             npcObject.GetComponentInChildren<NPCPencil>().Fire(0.1f, Helpers.Constants.DamageType.Static, playerObject.transform.position);
-            countdown = Random.Range(3f, 10f);
+            pencilCountdown = Random.Range(3f, 10f);
+        }
+        else if(paperCountdown <= 0)
+        {
+            npcObject.GetComponentInChildren<NPCPaper>().Fire(0.2f, Helpers.Constants.DamageType.Static);
+            paperCountdown = Random.Range(1f, 4f);
         }
         else
         {
-            countdown -= Time.deltaTime;
+            pencilCountdown -= Time.deltaTime;
+            paperCountdown -= Time.deltaTime;
         }
-        
-
-
 	}
 }
