@@ -15,6 +15,7 @@ public class Ruler : MonoBehaviour, IPlayerWeapon{
     private bool isLive;
     private float countdown;
     private static float TIMEOUT = 1f;
+    private float rotateSpeed = 2f;
 
     public int Ammo
     {
@@ -83,9 +84,22 @@ public class Ruler : MonoBehaviour, IPlayerWeapon{
            this.GetComponent<BoxCollider2D>().enabled = false;
         }
 
-        // Set wobble back and forth on joint by switching motor direction
-       
+        // Position of the ruler is set by the hinge joint on the player body
+        GetComponent<HingeJoint2D>().connectedAnchor = playerBody.position;
 
-        this.GetComponent<Rigidbody2D>().position = new Vector2(playerBody.position.x, playerBody.position.y+1f);
+        // Set wobble back and forth on joint by switching motor direction
+        float minAngle = GetComponent<HingeJoint2D>().limits.min;
+        float maxAngle = GetComponent<HingeJoint2D>().limits.max;
+        float currentAngle = GetComponent<HingeJoint2D>().jointAngle;
+        Debug.Log("joint angle: " + currentAngle);
+        if (currentAngle > maxAngle || currentAngle < minAngle)
+        {
+            float oldSpeed = this.GetComponent<JointMotor2D>().motorSpeed;
+            float newSpeed = oldSpeed * -1;
+            JointMotor2D m = this.GetComponent<JointMotor2D>();
+            m.motorSpeed = newSpeed;
+        }
+
+
     }
 }
