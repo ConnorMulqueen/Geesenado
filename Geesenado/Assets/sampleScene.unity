@@ -8779,7 +8779,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4735142143641864, guid: a71b01adc30013940b437fe5f3965134, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114261804106513132, guid: a71b01adc30013940b437fe5f3965134,
         type: 2}
@@ -9465,20 +9465,20 @@ HingeJoint2D:
   m_Enabled: 1
   serializedVersion: 4
   m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 0}
+  m_ConnectedRigidBody: {fileID: 675961090}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: -0.45}
-  m_ConnectedAnchor: {x: -2.76, y: 1.27}
-  m_UseMotor: 0
+  m_ConnectedAnchor: {x: 0, y: 0.42006075}
+  m_UseMotor: 1
   m_Motor:
-    m_MotorSpeed: 10
+    m_MotorSpeed: 500
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: 180
-    m_UpperAngle: 361.15198
+    m_LowerAngle: 309.01633
+    m_UpperAngle: 412.24374
 --- !u!212 &1724913847
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9554,7 +9554,7 @@ Transform:
   m_LocalScale: {x: 0.6849743, y: 2.3998652, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1724913850
 BoxCollider2D:

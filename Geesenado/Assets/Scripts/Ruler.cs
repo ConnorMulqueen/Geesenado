@@ -16,6 +16,8 @@ public class Ruler : MonoBehaviour, IPlayerWeapon{
     private float countdown;
     private static float TIMEOUT = 1f;
     private float rotateSpeed = 2f;
+    private bool isForwardSwing = true;
+    private int swingCycle = 0;
 
     public int Ammo
     {
@@ -56,8 +58,8 @@ public class Ruler : MonoBehaviour, IPlayerWeapon{
     public void Fire(float damagePoints = 0.1f, Constants.DamageType damageType = Constants.DamageType.Static)
     {
         Debug.Log("Ruler- received Fire() command - JG");
-        isLive = true;
 
+        isLive = true;
         if (countdown <= 0)
         {
             this.Countdown = TIMEOUT;
@@ -70,6 +72,20 @@ public class Ruler : MonoBehaviour, IPlayerWeapon{
             this.GetComponent<SpriteRenderer>().enabled = true;
             this.GetComponent<BoxCollider2D>().enabled = true;
 
+            // Set wobble back and forth on joint by switching motor direction
+            HingeJoint2D rulerJoint = GetComponent<HingeJoint2D>();
+            float minAngle = rulerJoint.limits.min;
+            float maxAngle = rulerJoint.limits.max;
+            float currentAngle = rulerJoint.jointAngle;
+
+            if ((currentAngle > maxAngle && isForwardSwing) || (currentAngle < minAngle && isForwardSwing == false))
+            {
+                JointMotor2D m = this.GetComponent<HingeJoint2D>().motor;
+                m.motorSpeed *= -1;
+                this.GetComponent<HingeJoint2D>().motor = m;
+                toggleSwing();
+            }
+
             this.Countdown -= Time.deltaTime;
             if (countdown <= 0)
             {
@@ -77,6 +93,8 @@ public class Ruler : MonoBehaviour, IPlayerWeapon{
                 Debug.Log("Ruler- countdown complete");
                 isLive = false;
             }
+
+
         }
         else
         {
@@ -84,22 +102,15 @@ public class Ruler : MonoBehaviour, IPlayerWeapon{
            this.GetComponent<BoxCollider2D>().enabled = false;
         }
 
-        // Position of the ruler is set by the hinge joint on the player body
-        GetComponent<HingeJoint2D>().connectedAnchor = playerBody.position;
+        
 
-        // Set wobble back and forth on joint by switching motor direction
-        float minAngle = GetComponent<HingeJoint2D>().limits.min;
-        float maxAngle = GetComponent<HingeJoint2D>().limits.max;
-        float currentAngle = GetComponent<HingeJoint2D>().jointAngle;
-        Debug.Log("joint angle: " + currentAngle);
-        if (currentAngle > maxAngle || currentAngle < minAngle)
-        {
-            float oldSpeed = this.GetComponent<JointMotor2D>().motorSpeed;
-            float newSpeed = oldSpeed * -1;
-            JointMotor2D m = this.GetComponent<JointMotor2D>();
-            m.motorSpeed = newSpeed;
-        }
+    }
 
-
+    public void toggleSwing()
+    {
+        if (isForwardSwing)
+            isForwardSwing = false;
+        else
+            isForwardSwing = true;
     }
 }
