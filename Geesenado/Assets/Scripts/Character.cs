@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Character : MonoBehaviour {
+public class Character : MonoBehaviour
+{
     public int _health;
     public float _movementSpeed;
     public Rigidbody2D _rb;
@@ -12,7 +13,6 @@ public class Character : MonoBehaviour {
     public void Start()
     {
         _health = 50;
-        _movementSpeed = 50f;
         _rb = GetComponent<Rigidbody2D>();
     }
 
@@ -40,7 +40,7 @@ public class Character : MonoBehaviour {
     {
         _movementSpeed = m;
     }
-   
+
     //public Weapon[] getInventory(){ return _inventory; }
     //public void addToInventory(Weapon w){}
 }

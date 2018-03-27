@@ -1,19 +1,172 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NPC : Character {
-	new void Start () 
+namespace Assets.Scripts
+{
+    public class NPC : Character
     {
-        base.Start();
-	}
-	
-	new void Update ()
-    {
+        //Used for passive walking
+        private float _prevTime; //Used to script movement() sequence
+        private double _timeRunning; //Time spent running and holding position
+        private UnityEngine.Vector2[] _directions; //The 4 cardinal directions (left, right, up, down)
+        private UnityEngine.Vector2 _currentDirection;
 
-	}
+        //Used for running at Player
+        private float _aggroRadius;
+        private bool _aggroFlag;
+        private Transform _target;
 
-    new void movement()
-    {
 
+        //Used for dodging the player's attacks
+        private float _dodgeRadius;
+        private bool _dodgeAvailable;
+        private bool _currentlyDodging;
+        private float _dodgeStartTime;
+
+
+        new void Start()
+        {
+            base.Start();
+            _prevTime = Time.time;
+            _directions = new UnityEngine.Vector2[4] { Vector2.left, Vector2.right, Vector2.up, Vector2.down };
+            _currentDirection = _directions[Random.Range(0, 4)];
+            _timeRunning = 3.0;
+
+            _aggroRadius = 5f;
+            _aggroFlag = false;
+            _target = GameObject.FindGameObjectWithTag("Player").transform;
+
+            _dodgeRadius = 3f;
+            _dodgeAvailable = false;
+            _currentlyDodging = false;
+        }
+
+        new void Update()
+        {
+            movement();
+        }
+
+        /*<summary> This method is the root of all movement for the NPC class. */
+        new void movement()
+        {
+            //Currently running towards Player (aggro state)
+            if (_aggroFlag)
+            {
+                if (_currentlyDodging)
+                {
+                    dodge();
+                }
+                else
+                {
+                    aggroRun();
+                }
+            }
+
+            //currently walking in random directions (passive state)
+            else if (!_aggroFlag)
+            {
+                passiveWalk();
+                if (Vector2.Distance(transform.position, _target.position) < _aggroRadius) //check if player is in range to aggro NPC
+                {
+                    _aggroFlag = true;
+                }
+            }
+        }
+
+        /*<summary> Removes health from this NPC instance */
+        new void damageInflicted(int dmg)
+        {
+            _health -= dmg;
+
+            //Panic run
+            if (_health < 20)
+            {
+                _movementSpeed = 5;
+                _timeRunning = 2;
+            }
+
+            //Die
+            if (_health < 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        /*<summary> looks and runs at player */
+        void aggroRun()
+        {
+            dodge();
+            transform.LookAt(_target);
+            transform.Rotate(new Vector3(0, -90, 0), Space.Self); ;
+            transform.Translate(new Vector3(_movementSpeed * Time.deltaTime, 0, 0));
+        }
+
+        /* <summary> Checks if a paperball is within _dodgeRadius, if it is, then 
+         * the NPC attempts to dodge it. There is also a time cooldown to reduce how often the NPC
+         * can dodge. */
+        void dodge()
+        {
+            Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, _dodgeRadius);
+
+            if (_dodgeAvailable && Time.time < _dodgeStartTime + .3) //Move in 'dodge' direction
+            {
+                _currentlyDodging = true;
+                transform.Translate(_currentDirection * _movementSpeed * Time.deltaTime * 3);
+            }
+            else
+            {
+                _currentlyDodging = false;
+            }
+
+            if (_dodgeAvailable && Time.time > _dodgeStartTime + 2.0) //dodge complete, reset flag
+            {
+                _dodgeAvailable = false;
+                _currentlyDodging = false;
+            }
+
+            for (int i = 0; i < hitColliders.Length; i++) //checks if paperball is within range, if it is then dodge.
+            {
+                if (!_dodgeAvailable && hitColliders[i].tag == "Bullet")
+                {
+                    _dodgeAvailable = true;
+                    _dodgeStartTime = Time.time;
+                    _currentDirection = _directions[Random.Range(2, 4)]; //choose new random direction (left or right) to Dodge towards
+                }
+            }
+
+        }
+
+
+        /*<summary> Used before the Player aggros the NPC, it makes the 
+         * NPC passively walk in random directions */
+        void passiveWalk()
+        {
+            //Walk
+            if (Time.time - _prevTime < _timeRunning)
+            {
+                transform.Translate(_currentDirection* Time.deltaTime * _movementSpeed);
+            }
+
+            //Hold position
+            else if (Time.time - _prevTime > _timeRunning && Time.time - _prevTime < _timeRunning * 2) { }
+
+            //Reset
+            else
+            {
+                _currentDirection = _directions[Random.Range(0, 4)];
+                _prevTime = Time.time;
+            }
+        }
+
+        /*<summary> Checks if this instance of NPC 
+         * gets hit with a weapon. If it does then it calls damageInflicted
+         * and removes health*/
+        void OnCollisionEnter2D(Collision2D col)
+        {
+            if (col.gameObject.tag == "Bullet")
+            {
+                damageInflicted(3);
+            }
+        }
     }
 }

@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - NPCWeaponTag
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -13,9 +15,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - WeaponsLayer
+  - PlayerLayer
+  - NPCWeaponsLayer
   - 
   - 
   - 
@@ -38,6 +40,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: PlayerLayer
+    uniqueID: 2397928429
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
