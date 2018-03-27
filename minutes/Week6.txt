@@ -1,0 +1,20 @@
+Geesenado Team Meeting Notes
+Location: Baldy 19
+Date: 3/27/18
+Attendance: Connor, Kevin, Jared, James(excused absence)
+	
+Tasks since last meeting:
+-	Character Select Screen (Connor)
+-	Finished Alpha Map (Kevin)
+-	Ruler weapon (Jared)	
+
+Topics Discussed:
+-	Alpha due tommorow
+-	Damaging npc
+-	Finishing documentation
+
+Summary: Talked about things we need to crunch out before alpha.
+Tasks for Next Meeting
+-	Connor:	NPC stops running at you after a while, sprites for character select
+-	Jared: Weapon pickups on map, slingshot weapon
+-	Kevin: 2 buildings complete on map
