@@ -117,7 +117,6 @@ namespace Assets.Scripts
 
             if (_dodgeAvailable && Time.time < _dodgeStartTime + .3) //Move in 'dodge' direction
             {
-                Debug.Log("DODGEINGASDASD");
                 _currentlyDodging = true;
                 transform.Translate(_currentDirection * _movementSpeed * Time.deltaTime * 3);
             }
@@ -149,7 +148,7 @@ namespace Assets.Scripts
             //Walk
             if (Time.time - _prevTime < _timeRunning)
             {
-                transform.Translate(Vector2.up * Time.deltaTime * _movementSpeed);
+                transform.Translate(_currentDirection* Time.deltaTime * _movementSpeed);
             }
 
             //Hold position
@@ -158,6 +157,9 @@ namespace Assets.Scripts
             //Reset
             else
             {
+                Debug.Log("reset direction");
+                int x = Random.Range(0, 4);
+                Debug.Log(x);
                 _currentDirection = _directions[Random.Range(0, 4)];
                 _prevTime = Time.time;
             }
