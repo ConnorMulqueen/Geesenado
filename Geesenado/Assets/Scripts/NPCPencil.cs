@@ -11,7 +11,7 @@ namespace Assets.Scripts
     {
         // Bodies
         public Rigidbody2D npcBody;
-        public Rigidbody2D pencilBody;
+        public Rigidbody2D npcPencilBody;
         public SpriteRenderer pencilSprite;
 
         // Location
@@ -19,7 +19,7 @@ namespace Assets.Scripts
         Vector3 targetPos;
 
         // Timing
-        private static float TIMEOUT = 1f;
+        private static float TIMEOUT = .1f;
         private bool isLive;
         private float countdown;
 
@@ -29,7 +29,7 @@ namespace Assets.Scripts
 
         public void Start()
         {
-            pencilBody.GetComponent<SpriteRenderer>().enabled = false;
+            npcPencilBody.GetComponent<SpriteRenderer>().enabled = false;
             this.IsLive = false;
             this.Countdown = TIMEOUT;
             Physics2D.IgnoreCollision(npcBody.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
@@ -53,44 +53,44 @@ namespace Assets.Scripts
             Vector2 fireToPoint = new Vector2()
         )
         {
-            // Load the fire to point into the global variable
-            targetPos = fireToPoint;
-
+            Debug.Log("NPC PECNIL FIRE");
+            
             // Enable the pencil to be  live
             this.isLive = true;
-            pencilBody.GetComponent<SpriteRenderer>().enabled = true;
-
-            // Set the up direction of the NPCPencil to be the same as the NPCs 
-            Vector2 direction = npcBody.transform.up;
-            transform.up = direction;
+            
+            // Enable box collider and sprite
+            npcPencilBody.GetComponent<SpriteRenderer>().enabled = true;
+            npcPencilBody.GetComponent<PolygonCollider2D>().enabled = true;
         }
 
         public void FixedUpdate()
         {
             if (isLive) // Checks if fire has been called, if so -> begin movement
-            {
-                // Set the location to move towards
-                transform.position = Vector3.MoveTowards(
-                    transform.position,
-                    targetPos,
-                    5 * Time.deltaTime
-                );
-
+            { 
                 // Start the countdown for length of time on the screen
                 this.Countdown -= Time.deltaTime;
 
                 if (countdown <= 0)
                 {
+
+                    // Set the up direction of the NPCPencil to be the same as the NPCs 
+                    transform.GetComponent<Rigidbody2D>().rotation = npcBody.rotation;
+                    transform.up = npcBody.transform.up;
+
+                    // Fire the pencil upward/where the npc is facing
+                    transform.GetComponent<Rigidbody2D>().velocity = transform.up * 10;
+                   
                     // Time's up, reset counter, isLive tag, and position
                     isLive = false;
                     this.Countdown = TIMEOUT;
-                    pencilBody.position = new Vector2(npcBody.position.x, npcBody.position.y);
                 }
             }
             else
             {
-                pencilBody.position = new Vector2(npcBody.position.x, npcBody.position.y);
-                pencilBody.GetComponent<SpriteRenderer>().enabled = false;
+                // Idle properties
+                npcPencilBody.position = new Vector2(npcBody.position.x, npcBody.position.y);
+                npcPencilBody.GetComponent<SpriteRenderer>().enabled = false;
+                npcPencilBody.GetComponent<PolygonCollider2D>().enabled = false;
             }
         }
 

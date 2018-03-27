@@ -20,6 +20,7 @@ public class WeaponController : MonoBehaviour {
     public Paper paper;
     public Pencil pencil;
     public Textbook textbook;
+    public Ruler ruler;
 
     // Local
     // item at position 0 of list will be fired
@@ -37,6 +38,7 @@ public class WeaponController : MonoBehaviour {
 
         melee = new List<IHoldable>();
         melee.Add(pencil);
+        melee.Add(ruler);
 	}
 	
 	void Update () {
@@ -53,7 +55,7 @@ public class WeaponController : MonoBehaviour {
         }
 
         // Toggle Functionality
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) && !Input.GetKey(KeyCode.LeftShift))
         {
             Debug.Log("Toggled Ranged Weapons");
             MoveToFirst(ranged.Count - 1, 0, ranged);

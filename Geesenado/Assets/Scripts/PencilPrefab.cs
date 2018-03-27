@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PencilPrefab : MonoBehaviour
 {
+    public float Damage;
+
     void Start()
     {
         Debug.Log("Hello");
