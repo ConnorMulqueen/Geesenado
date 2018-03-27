@@ -6,28 +6,33 @@ public class PlayableCharacter : Character {
     public Pencil pencil;
     public Paper paper;
 
-
+    
     new void Start()
     {
         base.Start();
+        Debug.Log("The Player's chosen char is " + PlayerPrefs.GetInt("CharacterSelected"));
+
+        Color myColor = new Color();
+        switch(PlayerPrefs.GetInt("CharacterSelected"))
+        {
+            case 0:
+                ColorUtility.TryParseHtmlString("#58369F", out myColor);
+                break;
+            case 1:
+                ColorUtility.TryParseHtmlString("#32A72D", out myColor);
+                break;
+            case 2:
+                ColorUtility.TryParseHtmlString("#9E3636", out myColor);      
+                break;
+        }
+        GetComponent<Renderer>().material.SetColor("_EmissionColor", myColor);
+
+
     }
 
     new void Update()
     {
         movement();
-
-        // Setting Mouse Left Click for Pencil attack
-        if (Input.GetButtonDown("Fire1") || Input.GetMouseButton(0))
-        {
-            pencil.Fire();
-        }
-
-        // Setting Space Bar for Paper attack
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Fire2"))
-        {
-            paper.Fire();
-        }
-
     }
 
     new public void movement()
