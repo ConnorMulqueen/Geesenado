@@ -59,6 +59,8 @@ public class Paper : MonoBehaviour, IPlayerWeapon
             
             paper.GetComponent<Rigidbody2D>().velocity = playerObject.GetComponent<Rigidbody2D>().transform.up * MAX_FIREPOWER +
                     new Vector3(playerObject.GetComponent<Rigidbody2D>().velocity.x, playerObject.GetComponent<Rigidbody2D>().velocity.y);
+            float dealDamage = .3f;
+            paper.GetComponent<PaperPrefabDamage>().Damage = dealDamage;
 
             Destroy(paper, .75f);
             this.Ammo--;

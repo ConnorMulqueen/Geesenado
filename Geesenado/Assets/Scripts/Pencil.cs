@@ -109,6 +109,7 @@ namespace Assets.Scripts
                 );
 
                 Physics2D.IgnoreCollision(pencilPrefab.transform.GetComponent<Collider2D>(), playerBody.transform.GetComponent<Collider2D>(), true);
+                pencilFab.GetComponent<PencilPrefab>().Damage = this.Damage;
 
                 //transform.Translate((playerBody.transform.position - transform.position).normalized * 5 * Time.deltaTime);
 

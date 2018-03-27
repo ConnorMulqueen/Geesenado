@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 61996269783034902}
   m_Layer: 8
   m_Name: PencilPrefab
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cf0d958d42f74c45b309225f423e293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Damage: 0
 --- !u!212 &212907527508089340
 SpriteRenderer:
   m_ObjectHideFlags: 1

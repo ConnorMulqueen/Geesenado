@@ -37,8 +37,8 @@ public class Ruler : MonoBehaviour, IPlayerWeapon{
 
     public float Damage
     {
-        get { return 0.1f; }
-        set { if (value != 0.1f) Damage = 0.1f; }
+        get { return 0.2f; }
+        set { if (value != 0.1f) Damage = 0.2f; }
     }
 
     public float Countdown
