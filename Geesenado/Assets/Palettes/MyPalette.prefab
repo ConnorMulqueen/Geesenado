@@ -168,6 +168,15 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
+  - first: {x: -7, y: -4, z: 0}
+    second:
+      m_TileIndex: 21
+      m_TileSpriteIndex: 21
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
   - first: {x: -10, y: -3, z: 0}
     second:
       m_TileIndex: 13
@@ -455,6 +464,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 47e6c76e2a47afa41ba3debb2714069e, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: fbd5ef558798e664caf3be56b5b8b522, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 7d44012efa5b54244a90989f6a0a660a, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: ee39e822105b4f149b76ad27abe4c2ad, type: 3}
@@ -498,8 +509,10 @@ Tilemap:
     m_Data: {fileID: 21300024, guid: e1e1b01e4a48aa242848155e8092e75d, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 2ce09638a2b92b54d8a5f942a2267945, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 30
+  - m_RefCount: 31
     m_Data:
       e00: 1
       e01: 0
@@ -518,14 +531,14 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 27
+  - m_RefCount: 28
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   - m_RefCount: 1
-    m_Data: {r: 0.8810378, g: 0.49705446, b: 0.6224473, a: 1}
+    m_Data: {r: 0.76638466, g: 0.47944677, b: 0.5555771, a: 1}
   - m_RefCount: 1
-    m_Data: {r: 0.8019863, g: 0.51648176, b: 0.5648185, a: 1}
+    m_Data: {r: 0.9677716, g: 0.4799791, b: 0.622801, a: 1}
   - m_RefCount: 1
-    m_Data: {r: 0.8499066, g: 0.53666353, b: 0.53901005, a: 1}
+    m_Data: {r: 0.712873, g: 0.3403156, b: 0.34995097, a: 1}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -13, y: -4, z: 0}
@@ -584,6 +597,8 @@ Tilemap:
     m_DirtyIndex: 0
   - serializedVersion: 1
     m_DirtyIndex: 1
+  - serializedVersion: 1
+    m_DirtyIndex: 0
   - serializedVersion: 1
     m_DirtyIndex: 0
   - serializedVersion: 1
