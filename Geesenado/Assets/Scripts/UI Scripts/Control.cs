@@ -5,7 +5,7 @@ public class Control : MonoBehaviour
 {
     public void NextScene()
     {
-        SceneManager.LoadScene("sampleScene");
+        SceneManager.LoadScene("CharacterSelect");
     }
     public void Quitter()
     {
