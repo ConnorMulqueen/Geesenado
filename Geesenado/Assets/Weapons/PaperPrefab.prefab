@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212628540941737140}
   - component: {fileID: 50313358975384806}
   - component: {fileID: 58694066714728984}
+  - component: {fileID: 114108889322720924}
   m_Layer: 8
   m_Name: PaperPrefab
   m_TagString: Bullet
@@ -77,6 +78,18 @@ CircleCollider2D:
   m_Offset: {x: 0.22, y: 0.19}
   serializedVersion: 2
   m_Radius: 1.2743185
+--- !u!114 &114108889322720924
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1688211475131586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0acdd22a723a51b4399ea1a9bc3b12ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 0
 --- !u!212 &212628540941737140
 SpriteRenderer:
   m_ObjectHideFlags: 1

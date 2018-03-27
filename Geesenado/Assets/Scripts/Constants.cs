@@ -18,5 +18,8 @@ namespace Helpers
             /** <summary>Instant GPA fail ("death")</summary>*/
             Instant
         }
+
+        // TAGS
+        public static string NPCWeaponTag = "NPCWeaponTag";
     }
 }
