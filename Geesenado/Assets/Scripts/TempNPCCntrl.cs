@@ -15,7 +15,7 @@ public class TempNPCCntrl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        pencilCountdown = 10f;
+        pencilCountdown = 2f;
         paperCountdown = 4f;
 	}
 	
@@ -24,7 +24,7 @@ public class TempNPCCntrl : MonoBehaviour {
         if(pencilCountdown <= 0)
         {
             // Fire pencil weapon
-            npcObject.GetComponentInChildren<NPCPencil>().Fire(0.1f, Helpers.Constants.DamageType.Static, playerObject.transform.position);
+           // npcObject.GetComponentInChildren<NPCPencil>().Fire(0.1f, Helpers.Constants.DamageType.Static, playerObject.transform.position);
             pencilCountdown = Random.Range(3f, 10f);
         }
         else if(paperCountdown <= 0)

@@ -73,7 +73,7 @@ public class NPCPaper : MonoBehaviour, INPCWeapon {
             );
 
             Physics2D.IgnoreCollision(npcObject.GetComponent<BoxCollider2D>(), paper.GetComponent<CircleCollider2D>());
-            paper.GetComponent<Rigidbody2D>().velocity = npcObject.GetComponent<Rigidbody2D>().transform.up * MAX_FIREPOWER +
+            paper.GetComponent<Rigidbody2D>().velocity = npcObject.GetComponent<Rigidbody2D>().transform.right * MAX_FIREPOWER +
                     new Vector3(npcObject.GetComponent<Rigidbody2D>().velocity.x, npcObject.GetComponent<Rigidbody2D>().velocity.y);
 
             Destroy(paper, .75f);
