@@ -7,4 +7,12 @@ using UnityEngine;
 public class PaperPrefabDamage : MonoBehaviour, IDealsDamage
 {
     public float DealDamage { get; set; }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        Debug.Log("Paper Collided");
+        this.GetComponent<CircleCollider2D>().enabled = false;
+        DestroyObject(this);
+    }
+
 }

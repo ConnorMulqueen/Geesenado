@@ -26,7 +26,7 @@ public class Character : MonoBehaviour
 
     }
 
-    public void damageInflicted(int damage)
+    public void damageInflicted(float damage)
     {
         _health -= damage;
     }
