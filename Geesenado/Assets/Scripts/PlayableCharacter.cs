@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Assets.Scripts;
+using UnityEngine.SceneManagement;
 
 public class PlayableCharacter : Character {
     public Pencil pencil;
@@ -38,5 +39,19 @@ public class PlayableCharacter : Character {
     new public void movement()
     {
         
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "NPCWeaponTag")
+        {
+            float dmg = collision.gameObject.GetComponent<IDealsDamage>().DealDamage;
+            _health -= dmg;
+            Debug.Log("Player Health: " + _health);
+            if (_health <= 0f)
+            {
+                SceneManager.LoadScene("gameOver");
+            }
+        }
     }
 }

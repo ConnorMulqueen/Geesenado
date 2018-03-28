@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/** <summary>An object that handles player ruler.</summary>*/
 public class Ruler : MonoBehaviour, IPlayerWeapon{
 
     // Game Objects
@@ -47,6 +48,8 @@ public class Ruler : MonoBehaviour, IPlayerWeapon{
         private set { countdown = value; }
     }
 
+    public float DealDamage { get { return Damage; } set { DealDamage = value;  } }
+    
     // Use this for initialization
     void Start () {
         isLive = true;

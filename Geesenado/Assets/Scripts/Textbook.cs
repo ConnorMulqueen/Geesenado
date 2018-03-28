@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
+/** <summary>An object that handles and spawns the player textbook prefab.</summary>*/
 public class Textbook : MonoBehaviour, IWeapon {
 
     public GameObject playerObject;
@@ -44,6 +45,11 @@ public class Textbook : MonoBehaviour, IWeapon {
         set { if (value > 0.5f) Damage = 0.5f; }
     }
 
+    /**
+    * <summary>Unused</summary>
+    */
+    public float DealDamage { get; set; }
+
     /** <summary>Damage starts at .1 and weapon must be charged to do full damage.</summary>
      */
     public void Fire(float damagePoints = .1f, Constants.DamageType damageType = Constants.DamageType.Static)
@@ -68,13 +74,13 @@ public class Textbook : MonoBehaviour, IWeapon {
                 );
 
                 // This is how we set the damage of the prefabs
-                textbook.GetComponent<TextbookPrefab>().damage = this.Damage;
+                textbook.GetComponent<TextbookPrefab>().DealDamage = this.Damage;
                 textbook.GetComponent<TextbookPrefab>().rotateSpeed = chargePercent / 10;
                 textbook.GetComponent<Rigidbody2D>().velocity = 
                     playerObject.GetComponent<Rigidbody2D>().transform.up * (MAX_FIREPOWER * (chargePercent / 100)) + 
                     new Vector3(playerObject.GetComponent<Rigidbody2D>().velocity.x,playerObject.GetComponent<Rigidbody2D>().velocity.y);
 
-                textbook.GetComponent<TextbookPrefab>().damage = Damage;
+                textbook.GetComponent<TextbookPrefab>().DealDamage = Damage;
 
                 Destroy(textbook, .75f);
                 this.Ammo--;

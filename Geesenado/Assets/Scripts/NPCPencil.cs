@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
+    /** <summary>An object that handles and spawns the NPC pencil prefab.</summary>*/
     public class NPCPencil : MonoBehaviour, INPCWeapon
     {
         // Bodies
@@ -46,7 +47,6 @@ namespace Assets.Scripts
          * the direction of that the character is facing</summary>
          * 
          */
-
         public void Fire(
             float damagePoints = 0.1f,
             Constants.DamageType damageType = Constants.DamageType.Static,
@@ -140,6 +140,18 @@ namespace Assets.Scripts
             private set { isLive = value; }
         }
 
+        public float DealDamage
+        {
+            get
+            {
+                return this.Damage;
+            }
+
+            set
+            {
+                DealDamage = value;
+            }
+        }
     }
 }
 

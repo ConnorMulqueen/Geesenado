@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**<summary>This handles the location of the reticle in the scene</summary> */ 
 public class Reticle : MonoBehaviour {
 
     // Scene Objects

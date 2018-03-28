@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
+/** <summary>An object that handles and spawns the NPC paper prefab.</summary>*/
 public class NPCPaper : MonoBehaviour, INPCWeapon {
 
     public GameObject npcObject;
@@ -14,6 +16,7 @@ public class NPCPaper : MonoBehaviour, INPCWeapon {
     private int maxAmmo;
     private int MAX_FIREPOWER = 10;
 
+    // The IWeapon class has descriptions for the following properties
     public int Ammo
     {
         get { return ammo; }
@@ -37,7 +40,10 @@ public class NPCPaper : MonoBehaviour, INPCWeapon {
         set { if (value > 0.3f) Damage = 0.3f; }
     }
 
-
+    /**
+     * <summary>Unused</summary>
+     */
+    public float DealDamage { get; set; }
 
     // Use this for initialization
     void Start () {
@@ -73,9 +79,15 @@ public class NPCPaper : MonoBehaviour, INPCWeapon {
             );
 
             Physics2D.IgnoreCollision(npcObject.GetComponent<BoxCollider2D>(), paper.GetComponent<CircleCollider2D>());
+
+            // Determine the velocity the paper is fired at
             paper.GetComponent<Rigidbody2D>().velocity = npcObject.GetComponent<Rigidbody2D>().transform.right * MAX_FIREPOWER +
                     new Vector3(npcObject.GetComponent<Rigidbody2D>().velocity.x, npcObject.GetComponent<Rigidbody2D>().velocity.y);
 
+            // Set damage the prefab will deal
+            paper.GetComponent<PaperPrefabDamage>().DealDamage = Damage;
+
+            // Set the lifetime of the paper prefab
             Destroy(paper, .75f);
             this.Ammo--;
         }

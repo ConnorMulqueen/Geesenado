@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**<summary>Used to identify weapons that is used by a player.</summary> */
 public interface IPlayerWeapon : IWeapon
 {
     /**

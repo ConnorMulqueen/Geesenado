@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PaperPrefabDamage : MonoBehaviour {
-
-    // Use this for initialization
-    public float Damage;
+/**<summary>The script that handles damage for the prefab</summary> */
+public class PaperPrefabDamage : MonoBehaviour, IDealsDamage
+{
+    public float DealDamage { get; set; }
 }

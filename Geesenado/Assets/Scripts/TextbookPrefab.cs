@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TextbookPrefab : MonoBehaviour {
+public class TextbookPrefab : MonoBehaviour, IDealsDamage {
 
-    public float damage;
     public float rotateSpeed;
 
-	// Use this for initialization
-	void Start () {
-        damage = .1f;
-	}
+    public float DealDamage { get; set; }
+
+    // Use this for initialization
+    void Start () {
+        
+    }
 	
 	// Update is called once per frame
 	void Update () {
