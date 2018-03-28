@@ -2,6 +2,7 @@
 
 [![Join the chat at https://gitter.im/Geesenado/Lobby](https://badges.gitter.im/Geesenado/Lobby.svg)](https://gitter.im/Geesenado/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+[Link to our prototype showcase here!](https://www.youtube.com/watch?v=ZycyCAmxYz4)
 ## Project Description:
 ### MVP:
 
@@ -32,16 +33,3 @@ We will make a 2D-topdown game that will take place on a map that resembles UBâ€
 
 ## User Story:
 I want to play a singleplayer 2D battle royale type game that takes place on UBâ€™s campus where I can play as a faculty member and use various items to lower students GPA. The objective of the game is to avoid the enclosing geese tornado (geesenado) and fail all the students.
-
-## Team Roles:
-
-Connor will work on developing the AI for the NPCs of the game.
-
-Matt will work as the UI Developer for the game, developing menus, displaying health bars, and leaderboard systems.
-
-Jared will work on weapons, droppable items, and physics for the weapons.
-
-Kevin will work as the map developer handling map events (item spawning, geesenado).
-
-James will work on the character controller (health system, movement).
-
