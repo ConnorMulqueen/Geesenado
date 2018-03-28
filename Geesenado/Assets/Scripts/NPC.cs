@@ -8,7 +8,7 @@ namespace Assets.Scripts
         //Used for passive walking
         private float _prevTime; //Used to script movement() sequence
         private double _timeRunning; //Time spent running and holding position
-        private UnityEngine.Vector2[] _directions; //The 4 cardinal directions (up, down, left, right)
+        private UnityEngine.Vector2[] _directions; //The 4 cardinal directions (left, right, up, down)
         private UnityEngine.Vector2 _currentDirection;
 
         //Used for running at Player
@@ -16,10 +16,6 @@ namespace Assets.Scripts
         private bool _aggroFlag;
         private Transform _target;
 
-        //Used for firing weapon
-        public NPCPencil _pencil;
-        public double _fireRate;
-        private double _prevFireTime;
 
         //Used for dodging the player's attacks
         private float _dodgeRadius;
@@ -50,14 +46,12 @@ namespace Assets.Scripts
             movement();
         }
 
-        /* <summary> NPC moves in random direction for prototype phase </summary>
-           Thoughts: use 'InvokeRepeating' in the Start() method instead
-           of this approach next time*/
+        /*<summary> This method is the root of all movement for the NPC class. */
         new void movement()
         {
+            //Currently running towards Player (aggro state)
             if (_aggroFlag)
             {
-
                 if (_currentlyDodging)
                 {
                     dodge();
@@ -67,6 +61,8 @@ namespace Assets.Scripts
                     aggroRun();
                 }
             }
+
+            //currently walking in random directions (passive state)
             else if (!_aggroFlag)
             {
                 passiveWalk();
@@ -77,6 +73,7 @@ namespace Assets.Scripts
             }
         }
 
+        /*<summary> Removes health from this NPC instance */
         new void damageInflicted(int dmg)
         {
             _health -= dmg;
@@ -84,33 +81,29 @@ namespace Assets.Scripts
             //Panic run
             if (_health < 20)
             {
-                _movementSpeed *= 3;
-                _timeRunning *= 2;
+                _movementSpeed = 5;
+                _timeRunning = 2;
             }
 
             //Die
-            else if (_health < 0)
+            if (_health < 0)
             {
                 Destroy(gameObject);
             }
         }
 
+        /*<summary> looks and runs at player */
         void aggroRun()
         {
             dodge();
             transform.LookAt(_target);
             transform.Rotate(new Vector3(0, -90, 0), Space.Self); ;
             transform.Translate(new Vector3(_movementSpeed * Time.deltaTime, 0, 0));
-
-            if (Time.time - _prevFireTime > _fireRate || _prevFireTime == 0)
-            {
-                //TODO: fire weapon here.
-
-                _prevFireTime = Time.time;
-
-            }
         }
 
+        /* <summary> Checks if a paperball is within _dodgeRadius, if it is, then 
+         * the NPC attempts to dodge it. There is also a time cooldown to reduce how often the NPC
+         * can dodge. */
         void dodge()
         {
             Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, _dodgeRadius);
@@ -136,13 +129,16 @@ namespace Assets.Scripts
                 if (!_dodgeAvailable && hitColliders[i].tag == "Bullet")
                 {
                     _dodgeAvailable = true;
-
                     _dodgeStartTime = Time.time;
                     _currentDirection = _directions[Random.Range(2, 4)]; //choose new random direction (left or right) to Dodge towards
                 }
             }
 
         }
+
+
+        /*<summary> Used before the Player aggros the NPC, it makes the 
+         * NPC passively walk in random directions */
         void passiveWalk()
         {
             //Walk
@@ -157,26 +153,20 @@ namespace Assets.Scripts
             //Reset
             else
             {
-                Debug.Log("reset direction");
-                int x = Random.Range(0, 4);
-                Debug.Log(x);
                 _currentDirection = _directions[Random.Range(0, 4)];
                 _prevTime = Time.time;
             }
         }
 
-
-        /* Phase 1 Testing functionality: Display aggro bubble
-  
-        void OnDrawGizmos()
+        /*<summary> Checks if this instance of NPC 
+         * gets hit with a weapon. If it does then it calls damageInflicted
+         * and removes health*/
+        void OnCollisionEnter2D(Collision2D col)
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, _aggroRadius);
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawWireSphere(transform.position, _dodgeRadius);
+            if (col.gameObject.tag == "Bullet")
+            {
+                damageInflicted(3);
+            }
         }
-
-        */
-
     }
 }
