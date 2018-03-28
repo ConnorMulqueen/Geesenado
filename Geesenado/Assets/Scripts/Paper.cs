@@ -42,6 +42,11 @@ public class Paper : MonoBehaviour, IPlayerWeapon
         set { if (value > 0.3f) Damage = 0.3f; }
     }
 
+    /**
+    * <summary>Unused</summary>
+    */
+    public float DealDamage { get; set; }
+
 
     public void Fire(float damagePoints = 0.3f, Constants.DamageType damageType = Constants.DamageType.Static)
     {
@@ -60,7 +65,7 @@ public class Paper : MonoBehaviour, IPlayerWeapon
             paper.GetComponent<Rigidbody2D>().velocity = playerObject.GetComponent<Rigidbody2D>().transform.up * MAX_FIREPOWER +
                     new Vector3(playerObject.GetComponent<Rigidbody2D>().velocity.x, playerObject.GetComponent<Rigidbody2D>().velocity.y);
             float dealDamage = .3f;
-            paper.GetComponent<PaperPrefabDamage>().Damage = dealDamage;
+            paper.GetComponent<PaperPrefabDamage>().DealDamage = dealDamage;
 
             Destroy(paper, .75f);
             this.Ammo--;

@@ -30,4 +30,9 @@ public class PlayerController : MonoBehaviour {
 			GetComponent<Rigidbody2D> ().velocity = targetVelocity * speed;
 		}
 	}
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("PLAYER COLLISION");
+    }
 }

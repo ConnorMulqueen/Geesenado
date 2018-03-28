@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PencilPrefab : MonoBehaviour
+public class PencilPrefab : MonoBehaviour, IDealsDamage
 {
-    public float Damage;
+    public float DealDamage { get; set; }
 
     void Start()
     {
-        Debug.Log("Hello");
     }
 
     void FixedUpdate()
     {
-        Debug.Log("Prefab Runnin");
         Vector2 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         Vector2 directionToMouse = new Vector2(

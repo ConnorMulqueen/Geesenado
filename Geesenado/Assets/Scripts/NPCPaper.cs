@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class NPCPaper : MonoBehaviour, INPCWeapon {
 
@@ -37,7 +38,10 @@ public class NPCPaper : MonoBehaviour, INPCWeapon {
         set { if (value > 0.3f) Damage = 0.3f; }
     }
 
-
+    /**
+     * <summary>Unused</summary>
+     */
+    public float DealDamage { get; set; }
 
     // Use this for initialization
     void Start () {
@@ -75,6 +79,9 @@ public class NPCPaper : MonoBehaviour, INPCWeapon {
             Physics2D.IgnoreCollision(npcObject.GetComponent<BoxCollider2D>(), paper.GetComponent<CircleCollider2D>());
             paper.GetComponent<Rigidbody2D>().velocity = npcObject.GetComponent<Rigidbody2D>().transform.right * MAX_FIREPOWER +
                     new Vector3(npcObject.GetComponent<Rigidbody2D>().velocity.x, npcObject.GetComponent<Rigidbody2D>().velocity.y);
+
+            // Set damage the prefab will deal
+            paper.GetComponent<PaperPrefabDamage>().DealDamage = Damage;
 
             Destroy(paper, .75f);
             this.Ammo--;

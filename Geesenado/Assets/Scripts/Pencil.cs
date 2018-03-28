@@ -65,6 +65,10 @@ namespace Assets.Scripts
             private set { isLive = value; }
         }
 
+        /**
+        * <summary>Unused</summary>
+        */
+        public float DealDamage { get; set; }
 
         public void Awake()
         {
@@ -109,7 +113,7 @@ namespace Assets.Scripts
                 );
 
                 Physics2D.IgnoreCollision(pencilPrefab.transform.GetComponent<Collider2D>(), playerBody.transform.GetComponent<Collider2D>(), true);
-                pencilFab.GetComponent<PencilPrefab>().Damage = this.Damage;
+                pencilFab.GetComponent<PencilPrefab>().DealDamage = this.Damage;
 
                 //transform.Translate((playerBody.transform.position - transform.position).normalized * 5 * Time.deltaTime);
 

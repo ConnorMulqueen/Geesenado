@@ -140,6 +140,18 @@ namespace Assets.Scripts
             private set { isLive = value; }
         }
 
+        public float DealDamage
+        {
+            get
+            {
+                return this.Damage;
+            }
+
+            set
+            {
+                DealDamage = value;
+            }
+        }
     }
 }
 

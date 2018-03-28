@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Character : MonoBehaviour
 {
-    public int _health;
+    public float _health;
     public float _movementSpeed;
     public Rigidbody2D _rb;
     private int _currEquippedMelee;
@@ -12,7 +12,7 @@ public class Character : MonoBehaviour
 
     public void Start()
     {
-        _health = 50;
+        _health = 4.0f;
         _rb = GetComponent<Rigidbody2D>();
     }
 
@@ -31,7 +31,7 @@ public class Character : MonoBehaviour
         _health -= damage;
     }
 
-    public int getHealth()
+    public float getHealth()
     {
         return _health;
     }

@@ -47,6 +47,8 @@ public class Ruler : MonoBehaviour, IPlayerWeapon{
         private set { countdown = value; }
     }
 
+    public float DealDamage { get { return Damage; } set { DealDamage = value;  } }
+    
     // Use this for initialization
     void Start () {
         isLive = true;
