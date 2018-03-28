@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/** <summary>A script for the pencil prefab.</summary>*/
 public class PencilPrefab : MonoBehaviour, IDealsDamage
 {
     public float DealDamage { get; set; }
@@ -19,7 +20,7 @@ public class PencilPrefab : MonoBehaviour, IDealsDamage
             mousePosition.y - transform.position.y
         );
         
-        //transform.up = directionToMouse;
+        //Angles the posiiton and velocity of the prefab
         transform.GetComponent<Rigidbody2D>().transform.up = directionToMouse;
         transform.GetComponent<Rigidbody2D>().velocity = transform.up * 10;
     }

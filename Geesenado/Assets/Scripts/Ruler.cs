@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/** <summary>An object that handles player ruler.</summary>*/
 public class Ruler : MonoBehaviour, IPlayerWeapon{
 
     // Game Objects

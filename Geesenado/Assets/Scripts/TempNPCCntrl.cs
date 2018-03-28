@@ -21,21 +21,24 @@ public class TempNPCCntrl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(pencilCountdown <= 0)
+        if (npcObject != null)
         {
-            // Fire pencil weapon
-           // npcObject.GetComponentInChildren<NPCPencil>().Fire(0.1f, Helpers.Constants.DamageType.Static, playerObject.transform.position);
-            pencilCountdown = Random.Range(3f, 10f);
-        }
-        else if(paperCountdown <= 0)
-        {
-            npcObject.GetComponentInChildren<NPCPaper>().Fire(0.2f, Helpers.Constants.DamageType.Static);
-            paperCountdown = Random.Range(1f, 4f);
-        }
-        else
-        {
-            pencilCountdown -= Time.deltaTime;
-            paperCountdown -= Time.deltaTime;
+            if (pencilCountdown <= 0)
+            {
+                // Fire pencil weapon
+                // npcObject.GetComponentInChildren<NPCPencil>().Fire(0.1f, Helpers.Constants.DamageType.Static, playerObject.transform.position);
+                pencilCountdown = Random.Range(3f, 10f);
+            }
+            else if (paperCountdown <= 0)
+            {
+                npcObject.GetComponentInChildren<NPCPaper>().Fire(0.2f, Helpers.Constants.DamageType.Static);
+                paperCountdown = Random.Range(1f, 4f);
+            }
+            else
+            {
+                pencilCountdown -= Time.deltaTime;
+                paperCountdown -= Time.deltaTime;
+            }
         }
 	}
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
+/** <summary>An object that handles and spawns the player textbook prefab.</summary>*/
 public class Textbook : MonoBehaviour, IWeapon {
 
     public GameObject playerObject;

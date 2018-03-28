@@ -1,6 +1,7 @@
 ﻿using Helpers;
 using UnityEngine;
 
+/**<summary>Used to identify weapons.</summary> */
 public interface IWeapon : IHoldable, IDealsDamage
 {
 
@@ -27,5 +28,6 @@ public interface IWeapon : IHoldable, IDealsDamage
      */
     float Damage { get; set; }
 
+    /** <summary>The function that is called from other classes to make collaboration easy</summary> */
     void Fire(float damagePoints=0f, Constants.DamageType damageType=Constants.DamageType.Static);
 }

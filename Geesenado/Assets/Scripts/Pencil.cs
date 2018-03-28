@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
+    /** <summary>An object that handles and spawns the player pencil prefab.</summary>*/
     public class Pencil : MonoBehaviour, IPlayerWeapon
     {
         // Bodies
