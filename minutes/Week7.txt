@@ -1,0 +1,22 @@
+Geesenado Team Meeting Notes
+Location: Baldy 19
+Date: 3/27/18
+Attendance: Connor, Kevin, Jared, James
+	
+Tasks since last meeting:
+- GitHub page registered (Connor)	
+- Made our collaboration help wanted GitHub issues (Connor, Kevin, Jared, James)
+- Submitted our Alpha phase (Connor, Kevin, Jared, James)
+
+Topics Discussed:
+- Changing movement of NPC to (Rigidbody 2D from kinematic -> dynamic AND 3D cube -> sprite)
+- Attempting to fix bugs listed as issues from people not on the team.
+- Fulfilling our MVP for the beta phase.	
+
+Summary: Talked about approaching Beta release.
+Tasks for Next Meeting
+-	All: Fix existing issues from Alpha
+-	Connor: Finish Beta landing page website, reformat NPC movement to sprites with dynamic rigidbodies.
+-	Jared: Item pickups on map, bug fixes for the NPC weapons.
+-	Kevin: Finish a couple buildings, work on Geesenado shrinking
+-	James: Menu UI element, Fixing bugs on Player and inventory.
