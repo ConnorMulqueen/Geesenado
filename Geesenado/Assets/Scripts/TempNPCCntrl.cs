@@ -39,6 +39,9 @@ public class TempNPCCntrl : MonoBehaviour {
                 pencilCountdown -= Time.deltaTime;
                 paperCountdown -= Time.deltaTime;
             }
+        }else
+        {
+            Debug.Log("NPC Object Was NUll");
         }
 	}
 }
