@@ -28,6 +28,7 @@ public class PauseGame : MonoBehaviour
     }
     public void Quitter()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("mainMenu");
     }
     public void Resume()

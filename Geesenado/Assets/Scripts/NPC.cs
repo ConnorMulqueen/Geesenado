@@ -74,7 +74,7 @@ namespace Assets.Scripts
         }
 
         /*<summary> Removes health from this NPC instance */
-        new void damageInflicted(int dmg)
+        new void damageInflicted(float dmg)
         {
             _health -= dmg;
 
@@ -165,7 +165,9 @@ namespace Assets.Scripts
         {
             if (col.gameObject.tag == "Bullet")
             {
-                damageInflicted(3);
+                float dmg = col.gameObject.GetComponent<IDealsDamage>().DealDamage;
+                Debug.Log("NPC took damage: " + dmg.ToString());
+                damageInflicted(dmg);
             }
         }
     }

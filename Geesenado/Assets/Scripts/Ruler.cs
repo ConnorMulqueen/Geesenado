@@ -19,6 +19,8 @@ public class Ruler : MonoBehaviour, IPlayerWeapon{
     private float rotateSpeed = 2f;
     private bool isForwardSwing = true;
     private int swingCycle = 0;
+    private Vector2 anchorLocation;
+    private Vector2 conAnchorLocation;
 
     public int Ammo
     {
@@ -39,7 +41,7 @@ public class Ruler : MonoBehaviour, IPlayerWeapon{
     public float Damage
     {
         get { return 0.2f; }
-        set { if (value != 0.1f) Damage = 0.2f; }
+        set { if (value != 0.2f) Damage = 0.2f; }
     }
 
     public float Countdown
@@ -56,6 +58,9 @@ public class Ruler : MonoBehaviour, IPlayerWeapon{
         this.GetComponent<SpriteRenderer>().enabled = false;
         this.GetComponent<BoxCollider2D>().enabled = false;
         Physics2D.IgnoreCollision(playerBody.GetComponent<Collider2D>(), GetComponent<BoxCollider2D>(), true);
+
+        anchorLocation = this.GetComponent<HingeJoint2D>().anchor;
+        conAnchorLocation = this.GetComponent<HingeJoint2D>().connectedAnchor;
     }
 
     public void Fire(float damagePoints = 0.1f, Constants.DamageType damageType = Constants.DamageType.Static)
@@ -105,7 +110,8 @@ public class Ruler : MonoBehaviour, IPlayerWeapon{
            this.GetComponent<BoxCollider2D>().enabled = false;
         }
 
-        
+        this.GetComponent<HingeJoint2D>().connectedAnchor = conAnchorLocation;
+        this.GetComponent<HingeJoint2D>().anchor = anchorLocation;
 
     }
 
@@ -115,5 +121,16 @@ public class Ruler : MonoBehaviour, IPlayerWeapon{
             isForwardSwing = false;
         else
             isForwardSwing = true;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "NPC")
+        {
+            JointMotor2D m = this.GetComponent<HingeJoint2D>().motor;
+            m.motorSpeed *= -1;
+            this.GetComponent<HingeJoint2D>().motor = m;
+            toggleSwing();
+        }
     }
 }

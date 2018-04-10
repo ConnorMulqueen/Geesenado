@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace UnityStandardAssets.CrossPlatformInput
 {
@@ -10,7 +11,7 @@ namespace UnityStandardAssets.CrossPlatformInput
 
         void OnEnable()
         {
-
+            SceneManager.LoadScene("mainMenu");
         }
 
         public void SetDownState()
