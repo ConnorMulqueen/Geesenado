@@ -1,0 +1,21 @@
+Geesenado Team Meeting Notes
+Location: Baldy 19
+Date: 4/10/18
+Attendance: Connor, Kevin, Jared, James
+	
+Tasks since last meeting:
+- GitHub landing page prototype	finished (Connor)
+- Changed NPC rigidbody to dynamic and fixed movement bugs(Connor)
+- Starting changeing Inventory system (James)
+
+Topics Discussed:
+- Using top down sprites found online for art
+- Features for our character select screen
+- Weapon pickup collision
+
+Summary: Talked about approaching Beta release.
+Tasks for Next Meeting
+-	Connor: Fixing the bandaid solution to character selector for Alpha -- adding photos, notes, and character sprites (like pokemon). Make NPCs fight each other.
+-	Jared:  Item pickups on map, bug fixes for the NPC weapons.
+-	Kevin: Finish adding details to the roofs of the buildings, 'geesenado' circle.
+-	James: Redo the Inventory System, change the UI,  implement stamina system.
