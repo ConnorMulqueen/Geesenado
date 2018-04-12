@@ -15,7 +15,6 @@ public class GameOverControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         myNPCList = (NPC[])FindObjectsOfType(typeof(NPC));
-        Debug.Log("Num NPCs: " + myNPCList.Length.ToString() );
         if(myNPCList.Length <= 0)
         {
             SceneManager.LoadScene("winScreen");

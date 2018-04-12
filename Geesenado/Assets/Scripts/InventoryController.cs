@@ -14,31 +14,31 @@ public class Inventory : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown ("Alpha 1")) {
+		if (Input.GetKeyDown ("Alpha1")) {
 			if (inventory [1]!= (null)) {
 				inventory [0] = inventory [1];
 			}
 		
 		}
-		if (Input.GetKeyDown ("Alpha 2")) {
+		if (Input.GetKeyDown ("Alpha2")) {
 			if (inventory [2]!= (null)) {
 				inventory [0] = inventory [2];
 			}
 
 		}
-		if (Input.GetKeyDown ("Alpha 3")) {
+		if (Input.GetKeyDown ("Alpha3")) {
 			if (inventory [3]!= (null)) {
 				inventory [0] = inventory [3];
 			}
 
 		}
-		if (Input.GetKeyDown ("Alpha 4")) {
+		if (Input.GetKeyDown ("Alpha4")) {
 			if (inventory [4]!= (null)) {
 				inventory [0] = inventory [4];
 			}
 
 		}
-		if (Input.GetKeyDown ("Alpha 5")) {
+		if (Input.GetKeyDown ("Alpha5")) {
 			if (inventory [5]!= (null)) {
 				inventory [0] = inventory [5];
 			}
@@ -46,7 +46,7 @@ public class Inventory : MonoBehaviour {
 		}
 		if (Input.GetMouseButton (0)) {
 			if (inventory [0] is IWeapon) {
-				(IWeapon)inventory [0].Fire ();
+				((IWeapon) inventory[0]).Fire();
 			}
 		}
 	}
@@ -57,7 +57,7 @@ public class Inventory : MonoBehaviour {
 		} 
 		else {
 			for (int i = 1; i < inventory.Length; i++) {
-				if (inventory [i] = null) {
+				if (inventory [i] == null) {
 					inventory [i] = item;
 					break;
 				} else {
@@ -73,7 +73,7 @@ public class Inventory : MonoBehaviour {
 		}
 		
 	}
-	int ReplaceInventory( IHoldable item ){
+	void ReplaceInventory( IHoldable item ){
 		IHoldable repalce = inventory [0];
 		for (int i = 1; i < inventory.Length; i++) {
 			if (inventory [i].Equals (repalce)) {

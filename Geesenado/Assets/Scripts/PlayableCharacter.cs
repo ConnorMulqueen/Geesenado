@@ -12,8 +12,12 @@ public class PlayableCharacter : Character {
 	public float currentHealth;
 	public Slider healthbar;
 
+
+
+
     new void Start()
     {
+		
 		inventory = new IHoldable[6];
         base.Start();
         Debug.Log("The Player's chosen char is " + PlayerPrefs.GetInt("CharacterSelected"));
@@ -34,6 +38,7 @@ public class PlayableCharacter : Character {
         GetComponent<Renderer>().material.SetColor("_EmissionColor", myColor);
 
 		healthbar.value = maxHealth;
+	
     }
 
     new void Update()
@@ -41,31 +46,32 @@ public class PlayableCharacter : Character {
         movement();
 		currentHealth = base.getHealth();
 		healthbar.value = calcHealth();
-		if (Input.GetKeyDown ("Alpha 1")) {
+
+		if (Input.GetKeyDown (KeyCode.Alpha1)) {
 			if (inventory [1]!= (null)) {
 				inventory [0] = inventory [1];
 			}
 
 		}
-		if (Input.GetKeyDown ("Alpha 2")) {
+		if (Input.GetKeyDown (KeyCode.Alpha2)) {
 			if (inventory [2]!= (null)) {
 				inventory [0] = inventory [2];
 			}
 
 		}
-		if (Input.GetKeyDown ("Alpha 3")) {
+		if (Input.GetKeyDown (KeyCode.Alpha3)) {
 			if (inventory [3]!= (null)) {
 				inventory [0] = inventory [3];
 			}
 
 		}
-		if (Input.GetKeyDown ("Alpha 4")) {
+		if (Input.GetKeyDown (KeyCode.Alpha4)) {
 			if (inventory [4]!= (null)) {
 				inventory [0] = inventory [4];
 			}
 
 		}
-		if (Input.GetKeyDown ("Alpha 5")) {
+		if (Input.GetKeyDown (KeyCode.Alpha5)) {
 			if (inventory [5]!= (null)) {
 				inventory [0] = inventory [5];
 			}
@@ -73,7 +79,7 @@ public class PlayableCharacter : Character {
 		}
 		if (Input.GetMouseButton (0)) {
 			if (inventory [0] is IWeapon) {
-				(IWeapon)inventory [0].Fire ();
+				((IWeapon) inventory[0]).Fire();
 			}
 		}
 
@@ -87,6 +93,7 @@ public class PlayableCharacter : Character {
 
 		return currentHealth / maxHealth;
 	}
+
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.tag == "NPCWeaponTag")
         {
@@ -102,30 +109,34 @@ public class PlayableCharacter : Character {
 			_health -= 0.1f;
 		}
     }
-	int addItem(IHoldable item){
+	bool addItem(IHoldable item){
 		int counter = 0;
-		if (inventory.Contains (item)) {
-			return 0;
-		} 
-		else {
+		bool final=false;
+
 			for (int i = 1; i < inventory.Length; i++) {
-				if (inventory [i] = null) {
+			if(inventory[i].Equals(item)){
+				final = false;
+				break;
+			}
+				if (inventory [i] == null) {
 					inventory [i] = item;
+				final = true;;
 					break;
 				} else {
 					if(counter==inventory.Length-1){
 						ReplaceInventory (item);
+					final= true;
 					}
 					else{
 						counter++;
 					}
 				}
 			}
-			return 1;
-		}
+
+		return final;
 
 	}
-	int ReplaceInventory( IHoldable item ){
+	void ReplaceInventory( IHoldable item ){
 		IHoldable repalce = inventory [0];
 		for (int i = 1; i < inventory.Length; i++) {
 			if (inventory [i].Equals (repalce)) {
