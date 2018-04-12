@@ -23,6 +23,8 @@ namespace Assets.Scripts
         private bool _currentlyDodging;
         private float _dodgeStartTime;
 
+        private bool _panicRun;
+
 
         new void Start()
         {
@@ -39,6 +41,8 @@ namespace Assets.Scripts
             _dodgeRadius = 3f;
             _dodgeAvailable = false;
             _currentlyDodging = false;
+
+            _panicRun = false;
         }
 
         new void Update()
@@ -49,8 +53,13 @@ namespace Assets.Scripts
         /*<summary> This method is the root of all movement for the NPC class. */
         new void movement()
         {
+
+            if (_panicRun)
+            {
+                panicRun();
+            }
             //Currently running towards Player (aggro state)
-            if (_aggroFlag)
+            else if (_aggroFlag)
             {
                 if (_currentlyDodging)
                 {
@@ -68,7 +77,9 @@ namespace Assets.Scripts
                 passiveWalk();
                 if (Vector2.Distance(transform.position, _target.position) < _aggroRadius) //check if player is in range to aggro NPC
                 {
+                    _rb.velocity = new Vector3(0f, 0f, 0f);
                     _aggroFlag = true;
+
                 }
             }
         }
@@ -79,10 +90,11 @@ namespace Assets.Scripts
             _health -= dmg;
 
             //Panic run
-            if (_health < 20)
+            if (_health < 1.0f)
             {
-                _movementSpeed = 5;
-                _timeRunning = 2;
+                _panicRun = true;
+                _timeRunning -= 1;
+                resetMovementInfluences();
             }
 
             //Die
@@ -96,9 +108,14 @@ namespace Assets.Scripts
         void aggroRun()
         {
             dodge();
+            _rb.velocity = new Vector3(0f, 0f, 0f);
             transform.LookAt(_target);
-            transform.Rotate(new Vector3(0, -90, 0), Space.Self); ;
-            transform.Translate(new Vector3(_movementSpeed * Time.deltaTime, 0, 0));
+            transform.Rotate(new Vector3(0, -90, 0), Space.Self);
+            if (!(Vector2.Distance(transform.position, _target.position) < 1.8f))
+            {   //check if player is in range to aggro NPC
+                transform.Translate(new Vector3(_movementSpeed * Time.deltaTime, 0, 0));
+            }
+
         }
 
         /* <summary> Checks if a paperball is within _dodgeRadius, if it is, then 
@@ -144,7 +161,8 @@ namespace Assets.Scripts
             //Walk
             if (Time.time - _prevTime < _timeRunning)
             {
-                transform.Translate(_currentDirection* Time.deltaTime * _movementSpeed);
+                //transform.Translate(_currentDirection* Time.deltaTime * _movementSpeed);
+                _rb.velocity = _currentDirection * 2f;
             }
 
             //Hold position
@@ -153,11 +171,30 @@ namespace Assets.Scripts
             //Reset
             else
             {
-                _currentDirection = _directions[Random.Range(0, 4)];
-                _prevTime = Time.time;
+                resetMovementInfluences();
             }
         }
+        void panicRun()
+        {
 
+            if (Time.time - _prevTime < _timeRunning)
+            {
+                _rb.velocity = _currentDirection * 5f;
+            }
+            else
+            {
+                resetMovementInfluences();
+            }
+        }
+        void resetMovementInfluences()
+        {
+            _rb.velocity = new Vector3(0f, 0f, 0f);
+            _currentDirection = _directions[Random.Range(0, 4)];
+            _prevTime = Time.time;
+            _rb.angularVelocity = 0f;
+
+
+        }
         /*<summary> Checks if this instance of NPC 
          * gets hit with a weapon. If it does then it calls damageInflicted
          * and removes health*/
@@ -168,6 +205,7 @@ namespace Assets.Scripts
                 float dmg = col.gameObject.GetComponent<IDealsDamage>().DealDamage;
                 Debug.Log("NPC took damage: " + dmg.ToString());
                 damageInflicted(dmg);
+                _rb.velocity = new Vector3(0f, 0f, 0f);
             }
         }
     }
