@@ -34,14 +34,15 @@ public class WeaponController : MonoBehaviour {
 	void Start () {
         ranged = new List<IHoldable>();
         ranged.Add(paper);
-        ranged.Add(textbook);
+        ranged.Add(textbook);  //Comment out for testing purposes
 
         melee = new List<IHoldable>();
         melee.Add(pencil);
-        melee.Add(ruler);
+        melee.Add(ruler); //Comment out for testing purposes
 	}
-	
+	//*Needs to be edited if player is only going to start with only start with one or two weapons and pickup the rest*//
 	void Update () {
+
         // Setting Mouse Left Click for MELEE attack
         if (Input.GetButtonDown("Fire1") || Input.GetMouseButton(0))
         {
@@ -73,4 +74,31 @@ public class WeaponController : MonoBehaviour {
         list.RemoveAt(oldIndex);
         list.Insert(newIndex, item);
     }
+
+    //Checks to see if weapons to pickup is not contained in the list of weapons then it is added.
+    public bool Pickup(string weapon)
+    {
+
+        if (weapon.Equals("Ruler") && !melee.Contains(ruler)){
+            melee.Add(ruler);
+        }else if (weapon.Equals("Textbook") && !ranged.Contains(textbook))
+        {
+           ranged.Add(textbook);
+        }
+        else if (weapon.Equals("Pencil") && !melee.Contains(pencil))
+        {
+            melee.Add(pencil);
+        }
+        else if (weapon.Equals("Paper") && !ranged.Contains(paper))
+        {
+            ranged.Add(paper);
+        }
+        else
+        {
+            return false;
+        }
+
+        return true;
+    }
+
 }

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayableCharacter : Character {
     public Pencil pencil;
     public Paper paper;
-
+    private WeaponController weaponController;
     
     new void Start()
     {
@@ -28,6 +28,8 @@ public class PlayableCharacter : Character {
         }
         GetComponent<Renderer>().material.SetColor("_EmissionColor", myColor);
 
+        //Getting the weaponController for weaponPickup
+        weaponController = GameObject.Find("WeaponController").GetComponent<WeaponController>();
 
     }
 
@@ -53,5 +55,24 @@ public class PlayableCharacter : Character {
                 SceneManager.LoadScene("gameOver");
             }
         }
+    }
+
+    /**
+        * <summary> If player collides with object that is of type pickUp, if it is 
+        * not in our list of holdables then we pick it up and add it to the list weapons </summary>
+        * 
+        */
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        GameObject other = collision.gameObject;
+        //We check to see if the object has the tag pickup, and if it is not in the list of player weapons already then we add it to the list.
+        if (other.CompareTag("Pickup"))
+        {
+            bool pickedUp = weaponController.GetComponent<WeaponController>().Pickup(other.GetComponent<WeaponPickupDecider>().Choice);
+            Debug.Log(pickedUp);
+            other.SetActive(!pickedUp);
+
+        }
+
     }
 }
