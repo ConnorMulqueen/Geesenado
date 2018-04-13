@@ -22,6 +22,8 @@ public class Ruler : MonoBehaviour, IPlayerWeapon{
     private Vector2 anchorLocation;
     private Vector2 conAnchorLocation;
 
+    public string Name { get { return "Ruler";  } }
+
     public int Ammo
     {
         get { return 1; }
@@ -59,8 +61,9 @@ public class Ruler : MonoBehaviour, IPlayerWeapon{
         this.GetComponent<BoxCollider2D>().enabled = false;
         Physics2D.IgnoreCollision(playerBody.GetComponent<Collider2D>(), GetComponent<BoxCollider2D>(), true);
 
+        this.GetComponent<HingeJoint2D>().connectedBody = playerBody;
         anchorLocation = this.GetComponent<HingeJoint2D>().anchor;
-        conAnchorLocation = this.GetComponent<HingeJoint2D>().connectedAnchor;
+        conAnchorLocation = new Vector2(0,0);
     }
 
     public void Fire(float damagePoints = 0.1f, Constants.DamageType damageType = Constants.DamageType.Static)
@@ -112,6 +115,7 @@ public class Ruler : MonoBehaviour, IPlayerWeapon{
 
         this.GetComponent<HingeJoint2D>().connectedAnchor = conAnchorLocation;
         this.GetComponent<HingeJoint2D>().anchor = anchorLocation;
+        rulerBody.position = playerBody.position;
 
     }
 
