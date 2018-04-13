@@ -21,15 +21,12 @@ public class GeesenadoScript : MonoBehaviour {
 
         for(int i=0; i <30; i++)
         {
-            var goose = (GameObject)Instantiate(
-                gooseObj,
-                new Vector3((geesenadoCirc.radius * Random.value) + geesenadoCirc.radius,
-                    (geesenadoCirc.radius * Random.value) + geesenadoCirc.radius, 1 ),
-                transform.rotation,
-                transform
-                );
+            var goose = (GameObject)Instantiate(gooseObj);
 
             goose.GetComponent<Goose>().geesenado = this.gameObject;
+            goose.GetComponent<DistanceJoint2D>().connectedBody = GetComponent<Rigidbody2D>();
+            goose.GetComponent<DistanceJoint2D>().connectedAnchor = geesenadoCirc.offset;
+            goose.GetComponent<DistanceJoint2D>().distance = geesenadoCirc.radius;
         }
 
         
