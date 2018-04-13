@@ -166,6 +166,8 @@ MonoBehaviour:
   paperObj: {fileID: 1305920128023386, guid: f8d73c42e19830a4397a475d251d0213, type: 2}
   textObj: {fileID: 1110857368678332, guid: d72fffbbce22c0a4ba811f532139c3bb, type: 2}
   rulerObj: {fileID: 1814293666484626, guid: 10ca5975b0bee784faf26f371602d7c6, type: 2}
+  notebookObj: {fileID: 1985499231190794, guid: 333143e727321d8459f14066c6d7a09f,
+    type: 2}
 --- !u!114 &114858786231184744
 MonoBehaviour:
   m_ObjectHideFlags: 1

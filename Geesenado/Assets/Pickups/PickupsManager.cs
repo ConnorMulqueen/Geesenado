@@ -16,7 +16,7 @@ public class PickupsManager : MonoBehaviour
         {
             var pickup = (GameObject)Instantiate(
                 pickupObjectPrefab,
-                new Vector3(Random.Range(0, 300), Random.Range(0, 130)),
+                new Vector3(Random.Range(0, 260), Random.Range(0, 100)),
                 transform.rotation
             );
         }

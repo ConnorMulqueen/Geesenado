@@ -24,6 +24,8 @@ namespace Assets.Scripts
         private bool isLive;
         private float countdown;
 
+        public string Name { get { return "Pencil"; } }
+
         public Pencil()
         {
             MaxAmmo = 1;

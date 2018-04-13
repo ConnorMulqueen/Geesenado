@@ -11,6 +11,7 @@ public class tempPlayerPickupHandler : MonoBehaviour
     public GameObject paperObj;
     public GameObject textObj;
     public GameObject rulerObj;
+    public GameObject notebookObj;
 
     // Use this for initialization
     void Start()
@@ -92,7 +93,7 @@ public class tempPlayerPickupHandler : MonoBehaviour
             }
             if (pickupType == "Ruler")
             {
-                Debug.Log("Player touched pencil pickup");
+                Debug.Log("Player touched ruler pickup");
                 var ruler = (GameObject)Instantiate(
                  rulerObj,
                 player.transform.position,
@@ -102,6 +103,24 @@ public class tempPlayerPickupHandler : MonoBehaviour
                 ruler.GetComponent<Ruler>().playerBody = player.GetComponent<Rigidbody2D>();
 
                 var result = player.GetComponent<PlayableCharacter>().addItem(ruler.GetComponent<Ruler>());
+
+                if (result)
+                {
+                    Destroy(collision.gameObject);
+                }
+            }
+            if (pickupType == "Notebook")
+            {
+                Debug.Log("Player touched pencil pickup");
+                var notebook = (GameObject)Instantiate(
+                 notebookObj,
+                 player.transform.position,
+                 player.transform.rotation
+                );
+
+                notebook.GetComponent<Notebook>().playerObject = player;
+
+                var result = player.GetComponent<PlayableCharacter>().addItem(notebook.GetComponent<Notebook>());
 
                 if (result)
                 {
