@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GeesenadoScript : MonoBehaviour {
     private CircleCollider2D geesenadoCirc;
+    public GameObject gooseObj;
 	// Use this for initialization
 	void Start () {
         geesenadoCirc = gameObject.AddComponent<CircleCollider2D>();
@@ -17,6 +18,21 @@ public class GeesenadoScript : MonoBehaviour {
         /*Debug.Log("STORM IS FORMED");
         Debug.Log("Offset X is:" + offsetX);
         Debug.Log("Offset Y is:" + offsetY);*/
+
+        for(int i=0; i <30; i++)
+        {
+            var goose = (GameObject)Instantiate(
+                gooseObj,
+                new Vector3((geesenadoCirc.radius * Random.value) + geesenadoCirc.radius,
+                    (geesenadoCirc.radius * Random.value) + geesenadoCirc.radius, 1 ),
+                transform.rotation,
+                transform
+                );
+
+            goose.GetComponent<Goose>().geesenado = this.gameObject;
+        }
+
+        
 	}
 	
 	// Update is called once per frame
