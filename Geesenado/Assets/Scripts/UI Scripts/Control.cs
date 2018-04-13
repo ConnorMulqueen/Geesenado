@@ -15,4 +15,12 @@ public class Control : MonoBehaviour
     {
         SceneManager.LoadScene("comingSoon");
     }
+    public void LoadMain()
+    {
+        SceneManager.LoadScene("mainMenu");
+    }
+    public void LoadHowToPlay()
+    {
+        SceneManager.LoadScene("howToPlay");
+    }
 }
