@@ -176,7 +176,7 @@ namespace Assets.Scripts
         }
         void panicRun()
         {
-
+            _rb.freezeRotation = true;
             if (Time.time - _prevTime < _timeRunning)
             {
                 _rb.velocity = _currentDirection * 5f;

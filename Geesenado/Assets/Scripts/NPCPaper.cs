@@ -67,8 +67,6 @@ public class NPCPaper : MonoBehaviour, INPCWeapon {
         Vector2 fireToPoint = new Vector2()
     )
     {
-        Debug.Log("NPC PAPER FIRE");
-
         if (ammo > 0)
         {
             // Create the paper prefab
