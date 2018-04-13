@@ -72,7 +72,7 @@ public class Paper : MonoBehaviour, IPlayerWeapon
 
             // Set the prefabs lifetime
             Destroy(paper, .75f);
-            this.Ammo--;
+            //this.Ammo--;
         }
         else
         {

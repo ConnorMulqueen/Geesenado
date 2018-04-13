@@ -41,6 +41,6 @@ public class WeaponPickupDecider : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        this.GetComponent<Rigidbody2D>().MoveRotation(this.GetComponent<Rigidbody2D>().rotation + 1);
+        //this.GetComponent<Rigidbody2D>().MoveRotation(this.GetComponent<Rigidbody2D>().rotation + 1);
 	}
 }

@@ -26,7 +26,7 @@ public class TempNPCCntrl : MonoBehaviour {
             if (pencilCountdown <= 0)
             {
                 // Fire pencil weapon
-                // npcObject.GetComponentInChildren<NPCPencil>().Fire(0.1f, Helpers.Constants.DamageType.Static, playerObject.transform.position);
+               // npcObject.GetComponentInChildren<NPCPencil>().Fire(0.1f, Helpers.Constants.DamageType.Static, playerObject.transform.position);
                 pencilCountdown = Random.Range(3f, 10f);
             }
             else if (paperCountdown <= 0)

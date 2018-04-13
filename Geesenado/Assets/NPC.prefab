@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 50930543800563718}
   - component: {fileID: 212505994948089680}
   - component: {fileID: 60695673788148066}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: NPCPencil
   m_TagString: NPCWeaponTag
   m_Icon: {fileID: 0}
@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 33053038533314278}
   - component: {fileID: 23387026857183982}
   - component: {fileID: 114049942121403840}
+  - component: {fileID: 114145470837037286}
   - component: {fileID: 61001116234462180}
   - component: {fileID: 50526884697960252}
   m_Layer: 0
@@ -105,7 +106,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1982858730044938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -125.8, y: -13.9, z: 0}
+  m_LocalPosition: {x: 22, y: 32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 2}
   m_Children:
   - {fileID: 4764739407833940}
@@ -133,13 +134,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1032979989187368}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.48, y: 0.85, z: 0}
+  m_LocalRotation: {x: -0.00977885, y: 0.009896819, z: -0.7112647, w: 0.7027866}
+  m_LocalPosition: {x: 0.16, y: -0.02, z: 0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4297997642620204}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.019000001, y: 1.5940001, z: -90.687004}
 --- !u!23 &23387026857183982
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -349,6 +350,20 @@ MonoBehaviour:
   _movementSpeed: 3
   _rb: {fileID: 0}
   maxHleath: 4
+--- !u!114 &114145470837037286
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1982858730044938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ff3a0af20560df468528f17b8b02e6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcObject: {fileID: 1982858730044938}
+  playerObject: {fileID: 1387448759194956, guid: a9d3d51eb6d929343b6a34b616402572,
+    type: 2}
 --- !u!114 &114477051899495768
 MonoBehaviour:
   m_ObjectHideFlags: 1
