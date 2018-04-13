@@ -88,3 +88,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82c1ef73cd1bca4d9a391befe742e22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gooseObj: {fileID: 0}

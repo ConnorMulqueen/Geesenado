@@ -65,6 +65,8 @@ namespace Assets.Scripts
         {
             if (_geesenadoActive)
             {
+                float dmg = 0.01f;
+                damageInflicted(dmg);
                 runTowardsCenter();
             }
             else if (_panicRun)
@@ -220,7 +222,7 @@ namespace Assets.Scripts
         }
         void runTowardsCenter()
         {
-            Vector3 worldPos = new Vector3(0, 0);
+            Vector3 worldPos = new Vector3(160, 48);
             Vector3 dir = worldPos - transform.position;
 
             _rb.velocity = new Vector3(0f, 0f, 0f);
@@ -234,6 +236,10 @@ namespace Assets.Scripts
         {
             dodge();
             _rb.velocity = new Vector3(0f, 0f, 0f);
+            if(_NPCTarget.Equals(null))
+            {
+                _fightingNPC = false;
+            }
             transform.LookAt(_NPCTarget);
             transform.Rotate(new Vector3(0, -90, 0), Space.Self);
             if (_runTowardsNPC && Vector2.Distance(transform.position, _NPCTarget.position) > _aggroRadius)
@@ -277,18 +283,29 @@ namespace Assets.Scripts
          * and removes health*/
         void OnCollisionEnter2D(Collision2D col)
         {
-            if (col.gameObject.tag == "Bullet")
+            if (col.gameObject.tag == "Bullet" || col.gameObject.tag == "NPCWeaponTag")
             {
                 float dmg = col.gameObject.GetComponent<IDealsDamage>().DealDamage;
                 Debug.Log("NPC took damage: " + dmg.ToString());
                 damageInflicted(dmg);
                 _rb.velocity = new Vector3(0f, 0f, 0f);
             }
-            if(col.gameObject.tag == "Geesenado")
+            
+        }
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            if (col.gameObject.tag == "Geesenado")
             {
                 Debug.Log("GEESENADO hit NPC");
-                float dmg = 0.01f;
-                damageInflicted(dmg);
+                _geesenadoActive = false;
+            }
+        }
+        private void OnTriggerExit2D(Collider2D col)
+        {
+            if (col.gameObject.tag == "Geesenado")
+            {
+                Debug.Log("GEESENADO hit NPC");
                 _geesenadoActive = true;
             }
         }

@@ -7,6 +7,7 @@ public class PickupsManager : MonoBehaviour
 
     public int spawnCount = 50;
     public GameObject pickupObjectPrefab;
+    public GameObject extraCreditPickup;
 
     // Use this for initialization
     void Start()
@@ -16,6 +17,15 @@ public class PickupsManager : MonoBehaviour
         {
             var pickup = (GameObject)Instantiate(
                 pickupObjectPrefab,
+                new Vector3(Random.Range(0, 260), Random.Range(0, 100)),
+                transform.rotation
+            );
+        }
+
+        for (int i = 0; i < 30; i++)
+        {
+            var pickup = (GameObject)Instantiate(
+                extraCreditPickup,
                 new Vector3(Random.Range(0, 260), Random.Range(0, 100)),
                 transform.rotation
             );
