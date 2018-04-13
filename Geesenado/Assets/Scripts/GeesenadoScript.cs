@@ -8,8 +8,8 @@ public class GeesenadoScript : MonoBehaviour {
 	void Start () {
         geesenadoCirc = gameObject.AddComponent<CircleCollider2D>();
         System.Random rnd = new System.Random();
-        float offsetX = rnd.Next(-80, -22);
-        float offsetY = rnd.Next(-90, 65);
+        float offsetX = rnd.Next(220, 265);
+        float offsetY = rnd.Next(5, 99);
         geesenadoCirc.offset = new Vector2(offsetX, offsetY);
         geesenadoCirc.radius = 160.0f;
         //geesenadoCirc.offset = new Vector2(-45f, 3f);

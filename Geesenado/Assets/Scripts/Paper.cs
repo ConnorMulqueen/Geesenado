@@ -20,6 +20,8 @@ public class Paper : MonoBehaviour, IPlayerWeapon
     private static float TIMEOUT = 3f;
     private float countdown;
 
+    public string Name { get { return "Paper"; } }
+
     public int Ammo
     {
         get { return ammo; }
@@ -72,7 +74,7 @@ public class Paper : MonoBehaviour, IPlayerWeapon
 
             // Set the prefabs lifetime
             Destroy(paper, .75f);
-            this.Ammo--;
+            //this.Ammo--;
         }
         else
         {

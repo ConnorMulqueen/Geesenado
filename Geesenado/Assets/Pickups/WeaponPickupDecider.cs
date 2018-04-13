@@ -10,7 +10,7 @@ public class WeaponPickupDecider : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        int weaponIndex = Random.Range(0, 3);
+        int weaponIndex = Random.Range(0, 5);
         spriteRenderer = this.GetComponent<SpriteRenderer>();
         Debug.Log("Weapon Pickup Choice was: " + weaponIndex);
         switch (weaponIndex)
@@ -35,12 +35,17 @@ public class WeaponPickupDecider : MonoBehaviour {
                 spriteRenderer.color = Color.red;
                 this.Choice = "Ruler";
                 break;
+            case 4:
+                // Notebook
+                spriteRenderer.color = Color.green;
+                this.Choice = "Notebook";
+                break;
         }
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        this.GetComponent<Rigidbody2D>().MoveRotation(this.GetComponent<Rigidbody2D>().rotation + 1);
+        //this.GetComponent<Rigidbody2D>().MoveRotation(this.GetComponent<Rigidbody2D>().rotation + 1);
 	}
 }

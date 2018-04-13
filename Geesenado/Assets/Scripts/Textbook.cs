@@ -5,7 +5,7 @@ using System.Threading;
 using UnityEngine;
 
 /** <summary>An object that handles and spawns the player textbook prefab.</summary>*/
-public class Textbook : MonoBehaviour, IWeapon {
+public class Textbook : MonoBehaviour, IPlayerWeapon {
 
     public GameObject playerObject;
     public Rigidbody2D textbookBody;
@@ -21,6 +21,7 @@ public class Textbook : MonoBehaviour, IWeapon {
     private bool beginCharge;
     private int ammo;
 
+    public string Name { get { return "Textbook"; } }
 
     public int Ammo
     {
