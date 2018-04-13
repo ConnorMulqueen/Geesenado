@@ -8,6 +8,8 @@ TagManager:
   - Bullet
   - Geesenado
   - NPC
+  - Pickup
+  - ExtraCredit
   layers:
   - Default
   - TransparentFX

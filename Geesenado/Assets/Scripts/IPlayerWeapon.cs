@@ -12,5 +12,6 @@ public interface IPlayerWeapon : IWeapon
      */
     void Fire(float damagePoints, Constants.DamageType damageType);
 
+    string Name { get; }
 }
 

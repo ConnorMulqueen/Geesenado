@@ -39,7 +39,7 @@ namespace Assets.Scripts
         public void Fire(float damagePoints = 0.1f, Constants.DamageType damageType = Constants.DamageType.Static)
         {
             // Call the overloaded Fire function
-            Fire(damagePoints,damageType,new Vector2());
+            Fire(damagePoints, damageType, new Vector2());
         }
 
         /**
@@ -53,11 +53,9 @@ namespace Assets.Scripts
             Vector2 fireToPoint = new Vector2()
         )
         {
-            Debug.Log("NPC PECNIL FIRE");
-            
             // Enable the pencil to be  live
             this.isLive = true;
-            
+
             // Enable box collider and sprite
             npcPencilBody.GetComponent<SpriteRenderer>().enabled = true;
             npcPencilBody.GetComponent<PolygonCollider2D>().enabled = true;
@@ -66,20 +64,15 @@ namespace Assets.Scripts
         public void FixedUpdate()
         {
             if (isLive) // Checks if fire has been called, if so -> begin movement
-            { 
+            {
                 // Start the countdown for length of time on the screen
                 this.Countdown -= Time.deltaTime;
 
                 if (countdown <= 0)
                 {
-
-                    // Set the up direction of the NPCPencil to be the same as the NPCs 
-                    transform.GetComponent<Rigidbody2D>().rotation = npcBody.rotation;
-                    transform.up = npcBody.transform.up;
-
                     // Fire the pencil upward/where the npc is facing
-                    transform.GetComponent<Rigidbody2D>().velocity = transform.up * 10;
-                   
+                    transform.GetComponent<Rigidbody2D>().velocity = npcBody.transform.right * 10;
+
                     // Time's up, reset counter, isLive tag, and position
                     isLive = false;
                     this.Countdown = TIMEOUT;
@@ -92,6 +85,7 @@ namespace Assets.Scripts
                 npcPencilBody.GetComponent<SpriteRenderer>().enabled = false;
                 npcPencilBody.GetComponent<PolygonCollider2D>().enabled = false;
             }
+
         }
 
         public void LateUpdate()
@@ -154,4 +148,3 @@ namespace Assets.Scripts
         }
     }
 }
-

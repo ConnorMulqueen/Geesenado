@@ -15,7 +15,9 @@ namespace Assets.Scripts
         private float _aggroRadius;
         private bool _aggroFlag;
         private Transform _target;
+        private Transform _NPCTarget;
 
+        private ArrayList _NPCTargets;
 
         //Used for dodging the player's attacks
         private float _dodgeRadius;
@@ -23,6 +25,11 @@ namespace Assets.Scripts
         private bool _currentlyDodging;
         private float _dodgeStartTime;
 
+        private bool _panicRun;
+        private bool _geesenadoActive;
+        private bool _fightingNPC;
+
+        private bool _runTowardsNPC;
 
         new void Start()
         {
@@ -34,11 +41,18 @@ namespace Assets.Scripts
 
             _aggroRadius = 5f;
             _aggroFlag = false;
+            _NPCTargets = new ArrayList();
             _target = GameObject.FindGameObjectWithTag("Player").transform;
+            foreach (GameObject g in GameObject.FindGameObjectsWithTag("NPC"))
+            {
+                _NPCTargets.Add(g);
+            }
 
             _dodgeRadius = 3f;
             _dodgeAvailable = false;
             _currentlyDodging = false;
+
+            _panicRun = false;
         }
 
         new void Update()
@@ -49,8 +63,18 @@ namespace Assets.Scripts
         /*<summary> This method is the root of all movement for the NPC class. */
         new void movement()
         {
+            if (_geesenadoActive)
+            {
+                float dmg = 0.01f;
+                damageInflicted(dmg);
+                runTowardsCenter();
+            }
+            else if (_panicRun)
+            {
+                panicRun();
+            }
             //Currently running towards Player (aggro state)
-            if (_aggroFlag)
+            else if (_aggroFlag)
             {
                 if (_currentlyDodging)
                 {
@@ -61,14 +85,34 @@ namespace Assets.Scripts
                     aggroRun();
                 }
             }
-
-            //currently walking in random directions (passive state)
+            else if (_fightingNPC)
+            {
+                fightNPC();
+            }
             else if (!_aggroFlag)
             {
                 passiveWalk();
+            }
+
+            //currently walking in random directions (passive state)
+            if (!_aggroFlag)
+            {
                 if (Vector2.Distance(transform.position, _target.position) < _aggroRadius) //check if player is in range to aggro NPC
                 {
+                    _rb.velocity = new Vector3(0f, 0f, 0f);
                     _aggroFlag = true;
+
+                }
+                foreach (GameObject g in _NPCTargets)
+                {
+                    if (g != null && !g.Equals(this.gameObject) && Vector2.Distance(transform.position, g.transform.position) < _aggroRadius)
+                    {
+                        //if(!g.GetComponent<NPC>().isFighting()) {
+                        Debug.Log("woah");
+                        _fightingNPC = true;
+                        _NPCTarget = g.transform;
+                        //}
+                    }
                 }
             }
         }
@@ -79,16 +123,17 @@ namespace Assets.Scripts
             _health -= dmg;
 
             //Panic run
-            if (_health < 20)
+            if (_health < 1.0f)
             {
-                _movementSpeed = 5;
-                _timeRunning = 2;
+                _panicRun = true;
+                resetMovementInfluences();
             }
 
             //Die
             if (_health < 0)
             {
                 Destroy(gameObject);
+                PlayerPrefs.SetInt("Score", PlayerPrefs.GetInt("Score") + 5);
             }
         }
 
@@ -96,9 +141,14 @@ namespace Assets.Scripts
         void aggroRun()
         {
             dodge();
+            _rb.velocity = new Vector3(0f, 0f, 0f);
             transform.LookAt(_target);
-            transform.Rotate(new Vector3(0, -90, 0), Space.Self); ;
-            transform.Translate(new Vector3(_movementSpeed * Time.deltaTime, 0, 0));
+            transform.Rotate(new Vector3(0, -90, 0), Space.Self);
+            if (!(Vector2.Distance(transform.position, _target.position) < 1.8f))
+            {   //check if player is in range to aggro NPC
+                transform.Translate(new Vector3(_movementSpeed * Time.deltaTime, 0, 0));
+            }
+
         }
 
         /* <summary> Checks if a paperball is within _dodgeRadius, if it is, then 
@@ -144,7 +194,8 @@ namespace Assets.Scripts
             //Walk
             if (Time.time - _prevTime < _timeRunning)
             {
-                transform.Translate(_currentDirection* Time.deltaTime * _movementSpeed);
+                //transform.Translate(_currentDirection* Time.deltaTime * _movementSpeed);
+                _rb.velocity = _currentDirection * 2f;
             }
 
             //Hold position
@@ -153,21 +204,109 @@ namespace Assets.Scripts
             //Reset
             else
             {
-                _currentDirection = _directions[Random.Range(0, 4)];
-                _prevTime = Time.time;
+                resetMovementInfluences();
             }
         }
+        void panicRun()
+        {
+            transform.eulerAngles = new Vector3(0f, 0f, 0f);
+            _rb.freezeRotation = true;
+            if (Time.time - _prevTime < _timeRunning)
+            {
+                _rb.velocity = _currentDirection * 5f;
+            }
+            else
+            {
+                resetMovementInfluences();
+            }
+        }
+        void runTowardsCenter()
+        {
+            Vector3 worldPos = new Vector3(160, 48);
+            Vector3 dir = worldPos - transform.position;
 
+            _rb.velocity = new Vector3(0f, 0f, 0f);
+            transform.LookAt(dir);
+            transform.Rotate(new Vector3(0, -90, 0), Space.Self);
+            transform.Translate(new Vector3(_movementSpeed * Time.deltaTime, 0, 0));
+            //TODO:
+        }
+
+        void fightNPC()
+        {
+            dodge();
+            _rb.velocity = new Vector3(0f, 0f, 0f);
+            if(_NPCTarget.Equals(null))
+            {
+                _fightingNPC = false;
+            }
+            transform.LookAt(_NPCTarget);
+            transform.Rotate(new Vector3(0, -90, 0), Space.Self);
+            if (_runTowardsNPC && Vector2.Distance(transform.position, _NPCTarget.position) > _aggroRadius)
+            {
+                transform.Translate(new Vector3(_movementSpeed * Time.deltaTime, 0, 0));
+
+            }
+            else
+            {
+                if (Time.time - _prevTime < _timeRunning)
+                {
+                    //transform.Translate(_currentDirection* Time.deltaTime * _movementSpeed);
+                    _rb.velocity = _currentDirection * 2f;
+                }
+                else
+                {
+                    resetMovementInfluences();
+                }
+            }
+            if (Vector2.Distance(transform.position, _target.position) > _aggroRadius + 5f) //if they seperate too far make them run back towards each other
+            {
+                _runTowardsNPC = true;
+            }
+
+
+        }
+        void resetMovementInfluences()
+        {
+            _rb.velocity = new Vector3(0f, 0f, 0f);
+            _currentDirection = _directions[Random.Range(0, 4)];
+            _prevTime = Time.time;
+            _rb.angularVelocity = 0f;
+        }
+
+        bool isFighting()
+        {
+            return _fightingNPC;
+        }
         /*<summary> Checks if this instance of NPC 
          * gets hit with a weapon. If it does then it calls damageInflicted
          * and removes health*/
         void OnCollisionEnter2D(Collision2D col)
         {
-            if (col.gameObject.tag == "Bullet")
+            if (col.gameObject.tag == "Bullet" || col.gameObject.tag == "NPCWeaponTag")
             {
                 float dmg = col.gameObject.GetComponent<IDealsDamage>().DealDamage;
                 Debug.Log("NPC took damage: " + dmg.ToString());
                 damageInflicted(dmg);
+                _rb.velocity = new Vector3(0f, 0f, 0f);
+            }
+            
+        }
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            if (col.gameObject.tag == "Geesenado")
+            {
+                Debug.Log("GEESENADO hit NPC");
+                _geesenadoActive = false;
+            }
+        }
+        private void OnTriggerExit2D(Collider2D col)
+        {
+            if (col.gameObject.tag == "Geesenado")
+            {
+                Debug.Log("GEESENADO hit NPC");
+                _geesenadoActive = true;
             }
         }
     }
