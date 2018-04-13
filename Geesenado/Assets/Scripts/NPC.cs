@@ -65,7 +65,7 @@ namespace Assets.Scripts
         {
             if (_geesenadoActive)
             {
-
+                runTowardsCenter();
             }
             else if (_panicRun)
             {
@@ -222,6 +222,11 @@ namespace Assets.Scripts
         {
             Vector3 worldPos = new Vector3(0, 0);
             Vector3 dir = worldPos - transform.position;
+
+            _rb.velocity = new Vector3(0f, 0f, 0f);
+            transform.LookAt(dir);
+            transform.Rotate(new Vector3(0, -90, 0), Space.Self);
+            transform.Translate(new Vector3(_movementSpeed * Time.deltaTime, 0, 0));
             //TODO:
         }
 
@@ -278,6 +283,13 @@ namespace Assets.Scripts
                 Debug.Log("NPC took damage: " + dmg.ToString());
                 damageInflicted(dmg);
                 _rb.velocity = new Vector3(0f, 0f, 0f);
+            }
+            if(col.gameObject.tag == "Geesenado")
+            {
+                Debug.Log("GEESENADO hit NPC");
+                float dmg = 0.01f;
+                damageInflicted(dmg);
+                _geesenadoActive = true;
             }
         }
     }
