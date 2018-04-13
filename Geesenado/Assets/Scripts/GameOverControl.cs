@@ -17,7 +17,7 @@ public class GameOverControl : MonoBehaviour {
         myNPCList = (NPC[])FindObjectsOfType(typeof(NPC));
         if(myNPCList.Length <= 0)
         {
-            SceneManager.LoadScene("winScreen");
+            SceneManager.LoadScene("gameOver2");
         }
 	}
 }

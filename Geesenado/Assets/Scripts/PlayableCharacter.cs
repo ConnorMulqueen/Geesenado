@@ -16,6 +16,7 @@ public class PlayableCharacter : Character
 
         inventory = new IHoldable[6];
         base.Start();
+        PlayerPrefs.SetInt("Score", 0);
         Debug.Log("The Player's chosen char is " + PlayerPrefs.GetInt("CharacterSelected"));
 
         Color myColor = new Color();
