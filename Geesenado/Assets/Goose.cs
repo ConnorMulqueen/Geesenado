@@ -16,7 +16,5 @@ public class Goose : MonoBehaviour {
 	void FixedUpdate () {
         GetComponent<DistanceJoint2D>().distance = geesenado.GetComponent<CircleCollider2D>().radius;
         GetComponent<Rigidbody2D>().position = Vector2.MoveTowards(GetComponent<Rigidbody2D>().position, playerObj.GetComponent<Rigidbody2D>().position, 3 * Time.deltaTime);
-        Debug.Log("Dis: " + GetComponent<DistanceJoint2D>().distance.ToString());
-
     }
 }
