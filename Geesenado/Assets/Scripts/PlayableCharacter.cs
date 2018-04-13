@@ -172,4 +172,14 @@ public class PlayableCharacter : Character
         }
 
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Geesenado")
+        {
+            Debug.Log("YOU ARE IN THE STORM! RUN!!");
+            float stormDmg = 0.1f * Time.deltaTime * 1.0f;
+            _health -= stormDmg;
+        }
+    }
 }
