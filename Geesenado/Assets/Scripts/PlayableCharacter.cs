@@ -121,6 +121,11 @@ public class PlayableCharacter : Character
         {
             _health -= 0.1f;
         }
+        if(collision.gameObject.tag == "ExtraCredit")
+        {
+            _health += .5f;
+            Destroy(collision.gameObject);
+        }
     }
     public bool addItem(IHoldable item)
     {

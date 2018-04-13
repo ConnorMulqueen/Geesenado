@@ -808,6 +808,8 @@ MonoBehaviour:
   spawnCount: 100
   pickupObjectPrefab: {fileID: 1004893789888840, guid: 4f0961295c7e1594b8dae5b8492132e4,
     type: 2}
+  extraCreditPickup: {fileID: 1834895174443602, guid: 12d1fd8d72972cf459673e9363233f0d,
+    type: 2}
 --- !u!4 &342825998
 Transform:
   m_ObjectHideFlags: 0
