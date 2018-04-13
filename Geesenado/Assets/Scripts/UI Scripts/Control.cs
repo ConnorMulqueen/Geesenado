@@ -23,4 +23,8 @@ public class Control : MonoBehaviour
     {
         SceneManager.LoadScene("howToPlay");
     }
+     public string GetScore()
+    {
+        return PlayerPrefs.GetInt("Score").ToString();
+    }
 }

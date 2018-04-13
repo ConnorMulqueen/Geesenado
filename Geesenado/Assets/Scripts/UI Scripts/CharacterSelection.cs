@@ -11,7 +11,7 @@ public class CharacterSelection : MonoBehaviour {
     private string[] professorNames;
     private void Start()
     {
-        professorNames = new string[3]{"Jesse Hartloff", "Carl Alphonce", "Bina Ramurthy"};
+        professorNames = new string[7]{"Jesse Hartloff", "Carl Alphonce", "Bina Ramurthy", "Atri Rudra", "Satish", "Victor E. Bull", "Ziarek"};
         characterList = new GameObject[transform.childCount];
 
         for(int i = 0; i < transform.childCount; i++)
@@ -49,6 +49,10 @@ public class CharacterSelection : MonoBehaviour {
     }
     public void ConfirmButton()
     {
+        if(index > 2)
+        {
+            index = 2;
+        }
         PlayerPrefs.SetInt("CharacterSelected", index);
         SceneManager.LoadScene("sampleScene");
     }
