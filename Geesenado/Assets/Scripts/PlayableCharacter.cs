@@ -10,6 +10,7 @@ public class PlayableCharacter : Character
     public float maxHealth = 4.0f;
     public float currentHealth;
     public Slider healthbar;
+    private bool inStorm = false;
 
     new void Start()
     {
@@ -91,6 +92,12 @@ public class PlayableCharacter : Character
                 inventory[0] = inventory[5];
             }
 
+        }
+
+        if (inStorm)
+        {
+            float stormDmg = 0.1f * Time.deltaTime * 1.0f;
+            _health -= stormDmg;
         }
         
     }
@@ -185,6 +192,16 @@ public class PlayableCharacter : Character
             Debug.Log("YOU ARE IN THE STORM! RUN!!");
             float stormDmg = 0.1f * Time.deltaTime * 1.0f;
             _health -= stormDmg;
+            inStorm = true;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Geesenado")
+        {
+            Debug.Log("YOU Left the storm");
+            inStorm = false;
         }
     }
 }

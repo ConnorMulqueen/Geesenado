@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   geesenado: {fileID: 1181408306722112, guid: 208a2a926fa3a8e4688df598209d7abb, type: 2}
+  playerObj: {fileID: 1387448759194956, guid: a9d3d51eb6d929343b6a34b616402572, type: 2}
 --- !u!212 &212172858726932138
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -182,6 +183,6 @@ DistanceJoint2D:
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
-  m_AutoConfigureDistance: 0
+  m_AutoConfigureDistance: 1
   m_Distance: 1
-  m_MaxDistanceOnly: 0
+  m_MaxDistanceOnly: 1

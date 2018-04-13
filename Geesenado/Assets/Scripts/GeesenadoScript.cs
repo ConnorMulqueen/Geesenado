@@ -22,7 +22,7 @@ public class GeesenadoScript : MonoBehaviour {
         for(int i=0; i <30; i++)
         {
             var goose = (GameObject)Instantiate(gooseObj);
-
+            goose.transform.position = new Vector2(Random.Range(0, 100) + geesenadoCirc.offset.x, Random.Range(0, 100) + geesenadoCirc.offset.y);
             goose.GetComponent<Goose>().geesenado = this.gameObject;
             goose.GetComponent<DistanceJoint2D>().connectedBody = GetComponent<Rigidbody2D>();
             goose.GetComponent<DistanceJoint2D>().connectedAnchor = geesenadoCirc.offset;
