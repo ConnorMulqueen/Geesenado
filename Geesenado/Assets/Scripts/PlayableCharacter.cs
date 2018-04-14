@@ -99,7 +99,11 @@ public class PlayableCharacter : Character
             float stormDmg = 0.1f * Time.deltaTime * 1.0f;
             _health -= stormDmg;
         }
-        
+
+        if (_health <= 0f)
+        {
+            SceneManager.LoadScene("gameOver");
+        }
     }
 
     new public void movement()
