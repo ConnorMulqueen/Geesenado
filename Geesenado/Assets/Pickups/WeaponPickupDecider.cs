@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaponPickupDecider : MonoBehaviour {
 
-    public Sprite[] sprites;
+    public Sprite[] sprites; // Stores the sprites of all the weapons
     SpriteRenderer spriteRenderer;
     List<IHoldable> weaponOptions;
     public GameObject pickupWeapon;
@@ -13,7 +13,7 @@ public class WeaponPickupDecider : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        int weaponIndex = Random.Range(0, 4);
+        int weaponIndex = Random.Range(0, 4); //Changed from 3 to 4, because the range is [0,4) = {0, 1, 2, 3}
         spriteRenderer = this.GetComponent<SpriteRenderer>();
 
         Debug.Log("Weapon Pickup Choice was: " + weaponIndex);
@@ -21,8 +21,8 @@ public class WeaponPickupDecider : MonoBehaviour {
         {
             case 0:
                 // Pencil
-                spriteRenderer.sprite = sprites[weaponIndex];
-                transform.localScale -= new Vector3(0.25F, 0.25F, 0);
+                spriteRenderer.sprite = sprites[weaponIndex]; //Gets the sprite for the randomly generated weapon
+                transform.localScale -= new Vector3(0.25F, 0.25F, 0); //Scales the weapon sprite
                 //spriteRenderer.color = Color.black;
                 this.Choice = "Pencil";
                 break;

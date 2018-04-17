@@ -70,7 +70,7 @@ public class PlayableCharacter : Character {
         {
             bool pickedUp = weaponController.GetComponent<WeaponController>().Pickup(other.GetComponent<WeaponPickupDecider>().Choice);
             Debug.Log(pickedUp);
-            other.SetActive(!pickedUp);
+            other.SetActive(!pickedUp); //if the weapon is picked up, the sprite will disapear, e.g. ~pickedUp = ~true = false.
 
         }
 
