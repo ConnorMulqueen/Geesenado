@@ -5,6 +5,9 @@
 [Link to our prototype showcase here!](https://www.youtube.com/watch?v=ZycyCAmxYz4)
 
 [Link to our alpha showcase here!](https://www.youtube.com/watch?v=yjcSNO0zn5w)
+
+[Link to our landing page here!](https://connormulqueen.github.io/Geesenado/)
+
 ## Project Description:
 ### MVP:
 
