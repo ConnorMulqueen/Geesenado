@@ -1,0 +1,22 @@
+Geesenado Team Meeting Notes
+Location: Baldy 19
+Date: 4/17/18
+Attendance: Connor, Kevin, Jared, James (Excused Absence)
+	
+Tasks since last meeting:
+-Submitted our beta phase
+-Ran our beta testing in a CSE113 lab
+-Fixed some bugs that were reported
+
+
+Topics Discussed:
+-Bugs/features reported in our beta testing session, how to fix/implement them
+-Objectives we need to hit for our official release
+
+
+Summary: Talked about approaching the Official release
+Tasks for Next Meeting
+-	Connor: Try to implement character sprites in-game instead of squares.
+-	Jared: Geesenado visuals, edit the textbook, show what weapon is selected on the UI, improve inventory system.
+-	Kevin: Improve logic of geesenado
+-	James: 
