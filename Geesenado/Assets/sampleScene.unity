@@ -810,6 +810,11 @@ MonoBehaviour:
     type: 2}
   extraCreditPickup: {fileID: 1834895174443602, guid: 12d1fd8d72972cf459673e9363233f0d,
     type: 2}
+  pencil: {fileID: 21300000, guid: f7d21d2203482ae41b83a4b1b7475960, type: 3}
+  paper: {fileID: 21300000, guid: 8696d9cc5ebe8584dafc62e89c37cb92, type: 3}
+  textbook: {fileID: 21300000, guid: 5916feafd510a4f46ba791ed86288790, type: 3}
+  notebook: {fileID: 21300000, guid: b14b087e90434be45834341c02b41326, type: 3}
+  ruler: {fileID: 21300000, guid: fb8efb79f2e6f734dad18eee6c1f1d18, type: 3}
 --- !u!4 &342825998
 Transform:
   m_ObjectHideFlags: 0
@@ -2351,15 +2356,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4048193478652252, guid: 208a2a926fa3a8e4688df598209d7abb, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -109.1
+      value: 146.2
       objectReference: {fileID: 0}
     - target: {fileID: 4048193478652252, guid: 208a2a926fa3a8e4688df598209d7abb, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -12.3
+      value: 47.4
       objectReference: {fileID: 0}
     - target: {fileID: 4048193478652252, guid: 208a2a926fa3a8e4688df598209d7abb, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 35.40662
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4048193478652252, guid: 208a2a926fa3a8e4688df598209d7abb, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2381,19 +2386,13 @@ Prefab:
       propertyPath: m_RootOrder
       value: 24
       objectReference: {fileID: 0}
-    - target: {fileID: 58798062680071260, guid: 208a2a926fa3a8e4688df598209d7abb,
+    - target: {fileID: 50052985966633082, guid: 208a2a926fa3a8e4688df598209d7abb,
         type: 2}
-      propertyPath: m_Enabled
-      value: 0
+      propertyPath: m_BodyType
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114716680221632208, guid: 208a2a926fa3a8e4688df598209d7abb,
-        type: 2}
-      propertyPath: gooseObj
-      value: 
-      objectReference: {fileID: 1772578264687134, guid: a879d2040ff7c254c832c7f601782eb1,
-        type: 2}
     m_RemovedComponents:
-    - {fileID: 58798062680071260, guid: 208a2a926fa3a8e4688df598209d7abb, type: 2}
+    - {fileID: 58179300714684052, guid: 208a2a926fa3a8e4688df598209d7abb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 208a2a926fa3a8e4688df598209d7abb, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1257807759
