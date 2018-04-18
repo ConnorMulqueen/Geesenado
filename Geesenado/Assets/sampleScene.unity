@@ -2351,15 +2351,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4048193478652252, guid: 208a2a926fa3a8e4688df598209d7abb, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -109.1
+      value: 146.2
       objectReference: {fileID: 0}
     - target: {fileID: 4048193478652252, guid: 208a2a926fa3a8e4688df598209d7abb, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -12.3
+      value: 47.4
       objectReference: {fileID: 0}
     - target: {fileID: 4048193478652252, guid: 208a2a926fa3a8e4688df598209d7abb, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 35.40662
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4048193478652252, guid: 208a2a926fa3a8e4688df598209d7abb, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2381,19 +2381,13 @@ Prefab:
       propertyPath: m_RootOrder
       value: 24
       objectReference: {fileID: 0}
-    - target: {fileID: 58798062680071260, guid: 208a2a926fa3a8e4688df598209d7abb,
+    - target: {fileID: 50052985966633082, guid: 208a2a926fa3a8e4688df598209d7abb,
         type: 2}
-      propertyPath: m_Enabled
-      value: 0
+      propertyPath: m_BodyType
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114716680221632208, guid: 208a2a926fa3a8e4688df598209d7abb,
-        type: 2}
-      propertyPath: gooseObj
-      value: 
-      objectReference: {fileID: 1772578264687134, guid: a879d2040ff7c254c832c7f601782eb1,
-        type: 2}
     m_RemovedComponents:
-    - {fileID: 58798062680071260, guid: 208a2a926fa3a8e4688df598209d7abb, type: 2}
+    - {fileID: 58179300714684052, guid: 208a2a926fa3a8e4688df598209d7abb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 208a2a926fa3a8e4688df598209d7abb, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1257807759

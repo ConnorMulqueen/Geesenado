@@ -108,7 +108,6 @@ namespace Assets.Scripts
                     if (g != null && !g.Equals(this.gameObject) && Vector2.Distance(transform.position, g.transform.position) < _aggroRadius)
                     {
                         //if(!g.GetComponent<NPC>().isFighting()) {
-                        Debug.Log("woah");
                         _fightingNPC = true;
                         _NPCTarget = g.transform;
                         //}
