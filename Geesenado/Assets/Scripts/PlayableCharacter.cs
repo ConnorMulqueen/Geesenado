@@ -194,7 +194,7 @@ public class PlayableCharacter : Character
         if(collision.gameObject.tag == "Geesenado")
         {
             Debug.Log("YOU ARE IN THE STORM! RUN!!");
-            float stormDmg = 0.1f * Time.deltaTime * 1.0f;
+            float stormDmg = 0.08f * Time.deltaTime * 1.0f;
             _health -= stormDmg;
             inStorm = true;
         }
