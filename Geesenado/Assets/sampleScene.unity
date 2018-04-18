@@ -875,7 +875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.884}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.547}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -884,7 +884,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1528,7 +1528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.884}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.547}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1537,7 +1537,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2768,7 +2768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.884}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.547}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2777,7 +2777,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2882,7 +2882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.884}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.547}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2891,7 +2891,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3024,7 +3024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.884}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.547}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3033,7 +3033,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3413,17 +3413,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f37ed573a17b624fa75dc8a04fd0fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel1: {fileID: 1689106534}
-  panel2: {fileID: 1714623209}
-  panel3: {fileID: 403577607}
-  panel4: {fileID: 772218635}
-  panel5: {fileID: 1602990819}
+  panels:
+  - {fileID: 1689106534}
+  - {fileID: 1714623209}
+  - {fileID: 403577607}
+  - {fileID: 772218635}
+  - {fileID: 1602990819}
   playerObject: {fileID: 205999961}
   pencil: {fileID: 21300000, guid: 7ea36e49580ec4a46869c5e4908d53b4, type: 3}
   paper: {fileID: 21300000, guid: 4d4f094f49053134f8abed34c7663c2b, type: 3}
   text: {fileID: 21300000, guid: fa809bebba01d104dacc2b5967bce4f2, type: 3}
-  ruler: {fileID: 21300000, guid: c41fcace136150a48be9afacfd1121de, type: 3}
+  ruler: {fileID: 21300000, guid: fb8efb79f2e6f734dad18eee6c1f1d18, type: 3}
   note: {fileID: 21300000, guid: cd5c128ea63c80c449d1a0aefb965862, type: 3}
+  blankSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &1932690869
 GameObject:
   m_ObjectHideFlags: 0
