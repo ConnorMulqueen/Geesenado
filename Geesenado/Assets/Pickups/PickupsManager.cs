@@ -62,8 +62,8 @@ public class PickupsManager : MonoBehaviour
                 break;
             case 2:
                 // Textbook
-                item.Sprite = pencil;
                 item.Choice = "Textbook";
+                item.Sprite = textbook;
                 break;
             case 3:
                 // Ruler
