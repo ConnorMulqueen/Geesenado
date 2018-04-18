@@ -30,11 +30,15 @@ public class GeesenadoScript : MonoBehaviour {
 
         
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        geesenadoCirc.radius = geesenadoCirc.radius - (1.5f * Time.deltaTime);
-        //Debug.Log("Storm is shrinking");
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(geesenadoCirc.radius >= 25)
+        { 
+            geesenadoCirc.radius = geesenadoCirc.radius - (1.3f * Time.deltaTime);
+            //Debug.Log("Storm is shrinking");
+        }
 	}
 
     private float PosNeg
