@@ -13,7 +13,7 @@ namespace Assets.Scripts
 
         //Used for running at Player
         private float _aggroRadius;
-        private bool _aggroFlag;
+        public bool _aggroFlag;
         private Transform _target;
         private Transform _NPCTarget;
 
@@ -30,6 +30,10 @@ namespace Assets.Scripts
         private bool _fightingNPC;
 
         private bool _runTowardsNPC;
+
+        //Add by Heyi
+        public float _attackTime;
+
 
         new void Start()
         {
@@ -58,6 +62,21 @@ namespace Assets.Scripts
         new void Update()
         {
             movement();
+            //Heyi Edied: Periodly Aggro
+            if (!_aggroFlag)
+            {
+                _attackTime = Time.time;
+            }
+            if (_aggroFlag)
+            {
+                if (Time.time > _attackTime + 10f)
+                {
+                    _aggroFlag = false;
+                }
+
+            }
+
+       
         }
 
         /*<summary> This method is the root of all movement for the NPC class. */
@@ -76,6 +95,15 @@ namespace Assets.Scripts
             //Currently running towards Player (aggro state)
             else if (_aggroFlag)
             {
+                //Edited by Heyi: To stop attack when the distance is too long
+                if (Vector2.Distance(transform.position, _target.position) > _aggroRadius) //check if player is in range to aggro NPC
+                {
+                    _aggroFlag = false;
+
+                }
+
+
+
                 if (_currentlyDodging)
                 {
                     dodge();
@@ -101,8 +129,9 @@ namespace Assets.Scripts
                 {
                     _rb.velocity = new Vector3(0f, 0f, 0f);
                     _aggroFlag = true;
-
+                   
                 }
+               
                 foreach (GameObject g in _NPCTargets)
                 {
                     if (g != null && !g.Equals(this.gameObject) && Vector2.Distance(transform.position, g.transform.position) < _aggroRadius)
