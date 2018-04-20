@@ -7,11 +7,10 @@ public class GeesenadoScript : MonoBehaviour {
     public GameObject gooseObj;
 	// Use this for initialization
 	void Start () {
+        float offsetX = Random.Range(30, 250);
+        float offsetY = Random.Range(5, 70);
+        GetComponent<Rigidbody2D>().position = new Vector2(offsetX, offsetY);
         geesenadoCirc = gameObject.AddComponent<CircleCollider2D>();
-        System.Random rnd = new System.Random();
-        float offsetX = rnd.Next(220, 265);
-        float offsetY = rnd.Next(5, 99);
-        geesenadoCirc.offset = new Vector2(offsetX, offsetY);
         geesenadoCirc.radius = 160.0f;
         //geesenadoCirc.offset = new Vector2(-45f, 3f);
         geesenadoCirc.isTrigger = true;
@@ -19,22 +18,37 @@ public class GeesenadoScript : MonoBehaviour {
         Debug.Log("Offset X is:" + offsetX);
         Debug.Log("Offset Y is:" + offsetY);*/
 
-        for(int i=0; i <30; i++)
+        for(int i=0; i <100; i++)
         {
             var goose = (GameObject)Instantiate(gooseObj);
-            goose.transform.position = new Vector2(Random.Range(0, 100) + geesenadoCirc.offset.x, Random.Range(0, 100) + geesenadoCirc.offset.y);
             goose.GetComponent<Goose>().geesenado = this.gameObject;
-            goose.GetComponent<DistanceJoint2D>().connectedBody = GetComponent<Rigidbody2D>();
-            goose.GetComponent<DistanceJoint2D>().connectedAnchor = geesenadoCirc.offset;
-            goose.GetComponent<DistanceJoint2D>().distance = geesenadoCirc.radius;
+            Vector2 center = GetComponent<Rigidbody2D>().position;
+            float radius = geesenadoCirc.radius;
+            float angle = Random.value * 360;
+            goose.transform.position = center + Vector2.right * radius * Mathf.Cos(angle) + Vector2.up * radius * Mathf.Sin(angle);
         }
 
         
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        geesenadoCirc.radius = geesenadoCirc.radius - (1.5f * Time.deltaTime);
-        //Debug.Log("Storm is shrinking");
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(geesenadoCirc.radius >= 25)
+        { 
+            geesenadoCirc.radius = geesenadoCirc.radius - (1.3f * Time.deltaTime);
+            //Debug.Log("Storm is shrinking");
+        }
 	}
+
+    private float PosNeg
+    {
+        get
+        {
+            if (Random.value > .5)
+                return 1;
+            else
+                return -1;
+        }
+    }
 }
