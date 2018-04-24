@@ -237,30 +237,35 @@ namespace Assets.Scripts
             _rb.velocity = new Vector3(0f, 0f, 0f);
             if(_NPCTarget.Equals(null))
             {
+                Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATARGET KILLED");
+                resetMovementInfluences();
                 _fightingNPC = false;
-            }
-            transform.LookAt(_NPCTarget);
-            transform.Rotate(new Vector3(0, -90, 0), Space.Self);
-            if (_runTowardsNPC && Vector2.Distance(transform.position, _NPCTarget.position) > _aggroRadius)
+            } else
             {
-                transform.Translate(new Vector3(_movementSpeed * Time.deltaTime, 0, 0));
-
-            }
-            else
-            {
-                if (Time.time - _prevTime < _timeRunning)
+                transform.LookAt(_NPCTarget);
+                transform.Rotate(new Vector3(0, -90, 0), Space.Self);
+                if (_runTowardsNPC && Vector2.Distance(transform.position, _NPCTarget.position) > _aggroRadius)
                 {
-                    //transform.Translate(_currentDirection* Time.deltaTime * _movementSpeed);
-                    _rb.velocity = _currentDirection * 2f;
+                    transform.Translate(new Vector3(_movementSpeed * Time.deltaTime, 0, 0));
+
                 }
                 else
                 {
-                    resetMovementInfluences();
+                    if (Time.time - _prevTime < _timeRunning)
+                    {
+                        //transform.Translate(_currentDirection* Time.deltaTime * _movementSpeed);
+                        _rb.velocity = _currentDirection * 2f;
+                    }
+                    else
+                    {
+                        resetMovementInfluences();
+                    }
                 }
-            }
-            if (Vector2.Distance(transform.position, _target.position) > _aggroRadius + 5f) //if they seperate too far make them run back towards each other
-            {
-                _runTowardsNPC = true;
+                if (Vector2.Distance(transform.position, _target.position) > _aggroRadius + 5f) //if they seperate too far make them run back towards each other
+                {
+                    _runTowardsNPC = true;
+
+                }
             }
 
 
