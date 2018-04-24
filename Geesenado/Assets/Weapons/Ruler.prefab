@@ -100,7 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32364bf9c874a124aac46a2a873b70e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerBody: {fileID: 0}
+  playerBody: {fileID: 50971166082401636, guid: a9d3d51eb6d929343b6a34b616402572,
+    type: 2}
   rulerBody: {fileID: 50490886009510838}
 --- !u!212 &212484009677089966
 SpriteRenderer:
@@ -155,7 +156,8 @@ HingeJoint2D:
   m_Enabled: 1
   serializedVersion: 4
   m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 0}
+  m_ConnectedRigidBody: {fileID: 50971166082401636, guid: a9d3d51eb6d929343b6a34b616402572,
+    type: 2}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
