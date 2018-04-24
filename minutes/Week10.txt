@@ -1,0 +1,22 @@
+Geesenado Team Meeting Notes
+Location: Baldy 19
+Date: 4/24/18
+Attendance: Connor, Kevin, Jared, James
+	
+Tasks since last meeting:
+-Collaboration phase ended
+-Added Weapon selection indicator
+-Added Sprites on map for weapons
+-Geesenado visually represented
+
+Topics Discussed:
+-The schedule came out and we have to present tomorrow - We discussed how to engage this presentation.
+-NPC bug to fix
+-Menu UI to fix for resolution
+
+Summary: Talked about approaching the Official release
+Tasks for Next Meeting
+-	Connor: Fix NPC bug, Fix Menu UI, Add a scene that tells you what each weapon does.
+-	Jared: Finish character sprites, add sound to in-game.
+-	Kevin: Putnam road.
+-	James: Add music to character select screen, in-game
