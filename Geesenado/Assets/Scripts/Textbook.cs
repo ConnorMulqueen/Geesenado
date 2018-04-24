@@ -12,11 +12,11 @@ public class Textbook : MonoBehaviour, IPlayerWeapon {
     public GameObject textbookPrefab;
 
     // Local
-    private readonly int MAX_AMMO = 5;
+    private readonly int MAX_AMMO = 10;
     private readonly float MAX_DAMMAGE = 0.5f;
     private readonly float MAX_CHARGE = 100f;
     private readonly float MAX_FIREPOWER = 15f;
-    private float chargeRate = 10f;
+    private float chargeRate = 15f;
     private float chargePercent;
     private bool beginCharge;
     private int ammo;
@@ -55,7 +55,7 @@ public class Textbook : MonoBehaviour, IPlayerWeapon {
      */
     public void Fire(float damagePoints = .1f, Constants.DamageType damageType = Constants.DamageType.Static)
     {
-        if (ammo > 0)
+        if (Ammo > 0)
         {
             if (beginCharge == false)
             {
@@ -91,7 +91,7 @@ public class Textbook : MonoBehaviour, IPlayerWeapon {
 
     // Use this for initialization
     void Start () {
-        ammo = 5;
+        Ammo = 10;
 	}
 	
 	// Update is called once per frame
@@ -99,6 +99,13 @@ public class Textbook : MonoBehaviour, IPlayerWeapon {
         if (beginCharge)
         {
             chargePercent += chargeRate * Time.deltaTime;
+            GetComponent<Transform>().localScale = new Vector3(2, 2, 1);
+            GetComponent<SpriteRenderer>().enabled = true;
+            GetComponent<SpriteRenderer>().color = Color.Lerp(Color.red, Color.green, ((MAX_CHARGE - chargePercent) / MAX_CHARGE));
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().enabled = false;
         }
 
         transform.position = playerObject.GetComponent<Rigidbody2D>().position;

@@ -18,4 +18,9 @@ public class TextbookPrefab : MonoBehaviour, IDealsDamage {
         // Now hopefully adds spin
         transform.Rotate(0,0,rotateSpeed);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        GetComponent<Rigidbody2D>().isKinematic = true;
+    }
 }
