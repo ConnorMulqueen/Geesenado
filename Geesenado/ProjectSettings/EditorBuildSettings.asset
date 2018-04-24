@@ -29,3 +29,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/gameOver2.unity
     guid: f553dfe92143a08488dcd27b542578c8
+  - enabled: 1
+    path: Assets/WeaponSelect.unity
+    guid: 371350f71c59eaa4a8debdd018f7e864
