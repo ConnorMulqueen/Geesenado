@@ -46,7 +46,7 @@ public class tempPlayerPickupHandler : MonoBehaviour
                 // Setup the player the pencil should  reference
                 pencil.GetComponent<Pencil>().playerBody = player.GetComponent<Rigidbody2D>();
 
-                var result = player.GetComponent<PlayableCharacter>().addItem(pencil.GetComponent<Pencil>());
+                var result = player.GetComponent<PlayableCharacter>().AddItem(pencil.GetComponent<Pencil>());
 
                 if (result)
                 {
@@ -66,7 +66,7 @@ public class tempPlayerPickupHandler : MonoBehaviour
 
                 paper.GetComponent<Paper>().playerObject = player;
 
-                var result = player.GetComponent<PlayableCharacter>().addItem(paper.GetComponent<Paper>());
+                var result = player.GetComponent<PlayableCharacter>().AddItem(paper.GetComponent<Paper>());
 
                 if (result)
                 {
@@ -84,7 +84,7 @@ public class tempPlayerPickupHandler : MonoBehaviour
 
                 text.GetComponent<Textbook>().playerObject = player;
 
-                var result = player.GetComponent<PlayableCharacter>().addItem(text.GetComponent<Textbook>());
+                var result = player.GetComponent<PlayableCharacter>().AddItem(text.GetComponent<Textbook>());
 
                 if (result)
                 {
@@ -102,7 +102,7 @@ public class tempPlayerPickupHandler : MonoBehaviour
 
                 ruler.GetComponent<Ruler>().playerBody = player.GetComponent<Rigidbody2D>();
 
-                var result = player.GetComponent<PlayableCharacter>().addItem(ruler.GetComponent<Ruler>());
+                var result = player.GetComponent<PlayableCharacter>().AddItem(ruler.GetComponent<Ruler>());
 
                 if (result)
                 {
@@ -120,15 +120,13 @@ public class tempPlayerPickupHandler : MonoBehaviour
 
                 notebook.GetComponent<Notebook>().playerObject = player;
 
-                var result = player.GetComponent<PlayableCharacter>().addItem(notebook.GetComponent<Notebook>());
+                var result = player.GetComponent<PlayableCharacter>().AddItem(notebook.GetComponent<Notebook>());
 
                 if (result)
                 {
                     Destroy(collision.gameObject);
                 }
             }
-
-            Destroy(collision.gameObject);
         }
 
     }
