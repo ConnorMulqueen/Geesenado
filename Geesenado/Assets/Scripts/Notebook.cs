@@ -83,7 +83,6 @@ public class Notebook : MonoBehaviour, IPlayerWeapon {
             this.GetComponent<PolygonCollider2D>().enabled = true;
             this.GetComponent<SpriteRenderer>().enabled = true;
 
-            Debug.Log(fireCountdown);
             if (Mathf.Floor(fireCountdown) % 2 == 0 && fireCountdown > 0)
             {
                 SpawnPaper();
