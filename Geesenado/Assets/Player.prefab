@@ -132,6 +132,8 @@ MonoBehaviour:
   - {fileID: 9100000, guid: dd4c92f51a664b74a9e93bb0bafe063b, type: 2}
   - {fileID: 9100000, guid: f24b9d012c9c0cd43acc655a5eff01fe, type: 2}
   - {fileID: 9100000, guid: 83ecc44fa2247414895f9e589777e337, type: 2}
+  geeseHonk: {fileID: 0}
+  hurtSound: {fileID: 0}
 --- !u!114 &114792010575960016
 MonoBehaviour:
   m_ObjectHideFlags: 1

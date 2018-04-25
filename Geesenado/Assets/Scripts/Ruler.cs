@@ -9,6 +9,10 @@ public class Ruler : MonoBehaviour, IPlayerWeapon{
     // Game Objects
     public Rigidbody2D playerBody;
     public Rigidbody2D rulerBody;
+    public AudioClip forwardSwingSound;
+    public AudioClip backSwingSound;
+    public AudioClip smackSound;
+
 
     // Locals
     private int ammo;
@@ -122,9 +126,17 @@ public class Ruler : MonoBehaviour, IPlayerWeapon{
     public void toggleSwing()
     {
         if (isForwardSwing)
+        {
+            GetComponent<AudioSource>().clip = forwardSwingSound;
             isForwardSwing = false;
+        }
         else
+        {
+            GetComponent<AudioSource>().clip = backSwingSound;
             isForwardSwing = true;
+        }
+
+        GetComponent<AudioSource>().Play();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -136,5 +148,7 @@ public class Ruler : MonoBehaviour, IPlayerWeapon{
             this.GetComponent<HingeJoint2D>().motor = m;
             toggleSwing();
         }
+        GetComponent<AudioSource>().clip = smackSound;
+        GetComponent<AudioSource>().Play();
     }
 }

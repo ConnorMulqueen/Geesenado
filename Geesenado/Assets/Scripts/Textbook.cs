@@ -81,6 +81,8 @@ public class Textbook : MonoBehaviour, IPlayerWeapon {
                     playerObject.GetComponent<Rigidbody2D>().transform.up * (MAX_FIREPOWER * (chargePercent / 100)) + 
                     new Vector3(playerObject.GetComponent<Rigidbody2D>().velocity.x,playerObject.GetComponent<Rigidbody2D>().velocity.y);
 
+                textbook.GetComponent<TextbookPrefab>().PlayThrowSound();
+
                 textbook.GetComponent<TextbookPrefab>().DealDamage = Damage;
 
                 Destroy(textbook, .75f);
