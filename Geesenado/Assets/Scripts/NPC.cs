@@ -14,6 +14,8 @@ namespace Assets.Scripts
         //Used for running at Player
         private float _aggroRadius;
         private bool _aggroFlag;
+		//Alex Wu
+		private float _aggroStateStartTime;
         private Transform _target;
         private Transform _NPCTarget;
 
@@ -83,6 +85,11 @@ namespace Assets.Scripts
                 else
                 {
                     aggroRun();
+					//Alex Wu
+					if (Time.time > _aggroStateStartTime + 10.0f) 
+					{
+						_aggroFlag = false;
+					}
                 }
             }
             else if (_fightingNPC)
@@ -99,9 +106,10 @@ namespace Assets.Scripts
             {
                 if (Vector2.Distance(transform.position, _target.position) < _aggroRadius) //check if player is in range to aggro NPC
                 {
-                    _rb.velocity = new Vector3(0f, 0f, 0f);
-                    _aggroFlag = true;
-
+					_rb.velocity = new Vector3(0f, 0f, 0f);
+					_aggroFlag = true;
+					//Alex Wu
+					_aggroStateStartTime = Time.time;
                 }
                 foreach (GameObject g in _NPCTargets)
                 {
