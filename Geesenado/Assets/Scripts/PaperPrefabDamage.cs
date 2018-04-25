@@ -6,12 +6,38 @@ using UnityEngine;
 /**<summary>The script that handles damage for the prefab</summary> */
 public class PaperPrefabDamage : MonoBehaviour, IDealsDamage
 {
+    public AudioClip throwSound;
+    public AudioClip hitSound;
+    private bool inView = false;
+
     public float DealDamage { get; set; }
+
+    private void Start()
+    {
+    }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log("Paper Collided");
-        //this.GetComponent<CircleCollider2D>().enabled = false;
+        if (inView)
+        {
+            GetComponent<AudioSource>().clip = hitSound;
+            GetComponent<AudioSource>().Play();
+        }
     }
 
+    private void OnBecameVisible()
+    {
+        inView = true;
+    }
+
+    private void OnBecameInvisible()
+    {
+        inView = false;
+    }
+
+    public void PlayThrowSound()
+    {
+        GetComponent<AudioSource>().clip = throwSound;
+        GetComponent<AudioSource>().Play();
+    }
 }
