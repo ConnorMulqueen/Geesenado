@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4048193478652252}
   - component: {fileID: 50052985966633082}
-  - component: {fileID: 58798062680071260}
   - component: {fileID: 114716680221632208}
+  - component: {fileID: 58179300714684052}
   m_Layer: 0
   m_Name: Geesenado
   m_TagString: Geesenado
@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1181408306722112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -109.1, y: -12.3, z: 35.40662}
+  m_LocalPosition: {x: 17.4, y: -33.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -62,21 +62,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &58798062680071260
+--- !u!58 &58179300714684052
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1181408306722112}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 270.8, y: 64}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 155
+  m_Radius: 0.5
 --- !u!114 &114716680221632208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -88,4 +88,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82c1ef73cd1bca4d9a391befe742e22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gooseObj: {fileID: 0}
+  gooseObj: {fileID: 1772578264687134, guid: a879d2040ff7c254c832c7f601782eb1, type: 2}

@@ -23,7 +23,11 @@ public class Control : MonoBehaviour
     {
         SceneManager.LoadScene("howToPlay");
     }
-     public string GetScore()
+    public void LoadWeaponSelect()
+    {
+        SceneManager.LoadScene("WeaponSelect");
+    }
+    public string GetScore()
     {
         return PlayerPrefs.GetInt("Score").ToString();
     }
