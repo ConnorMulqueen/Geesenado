@@ -12,6 +12,7 @@ public class PlayableCharacter : Character
     public float currentHealth;
     public Slider healthbar;
     private bool inStorm = false;
+    public RuntimeAnimatorController[] animators;
 
     new void Start()
     {
@@ -22,21 +23,12 @@ public class PlayableCharacter : Character
         PlayerPrefs.SetInt("Score", 0);
         Debug.Log("The Player's chosen char is " + PlayerPrefs.GetInt("CharacterSelected"));
 
-        Color myColor = new Color();
-        switch (PlayerPrefs.GetInt("CharacterSelected"))
+        int characterInt = PlayerPrefs.GetInt("CharacterSelected");
+        GetComponent<Animator>().runtimeAnimatorController = animators[characterInt];
+        if(characterInt > animators.Length)
         {
-            case 0:
-                ColorUtility.TryParseHtmlString("#58369F", out myColor);
-                break;
-            case 1:
-                ColorUtility.TryParseHtmlString("#32A72D", out myColor);
-                break;
-            case 2:
-                ColorUtility.TryParseHtmlString("#9E3636", out myColor);
-                break;
+            GetComponent<Animator>().runtimeAnimatorController = animators[animators.Length - 1];
         }
-        GetComponent<Renderer>().material.SetColor("_EmissionColor", myColor);
-
         healthbar.value = maxHealth;
 
     }

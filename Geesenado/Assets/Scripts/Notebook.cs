@@ -11,7 +11,7 @@ public class Notebook : MonoBehaviour, IPlayerWeapon {
     public GameObject playerObject;
     private int MAX_FIREPOWER = 10;
     private bool begin = false;
-    private float countdown = 5;
+    private float countdown = 0;
     private float fireCountdown = 0;
     private Vector2 pausePosition;
 
@@ -36,8 +36,8 @@ public class Notebook : MonoBehaviour, IPlayerWeapon {
 
     public float Damage
     {
-        get { return 0.5f; }
-        set { if (value > 0.5f) Damage = 0.5f; }
+        get { return 0.3f; }
+        set { if (value > 0.3f) Damage = 0.3f; }
     }
 
     /**
@@ -52,22 +52,22 @@ public class Notebook : MonoBehaviour, IPlayerWeapon {
         Debug.Log("Notebook Fired");
         DealDamage = Damage;
 
-        pausePosition = playerObject.GetComponent<Rigidbody2D>().position;
         if (ammo > 0 && countdown <= 0)
         {
+            pausePosition = playerObject.GetComponent<Rigidbody2D>().position;
             begin = true;
             fireCountdown = 100;
             this.GetComponent<Rigidbody2D>().position = pausePosition;
             this.GetComponent<PolygonCollider2D>().enabled = true;
             this.GetComponent<SpriteRenderer>().enabled = true;
-            countdown = 5;
+            countdown = 3;
         }
     }
 
     // Use this for initialization
     void Start () {
-        ammo = 100;
-        MAX_AMMO = 100;
+        ammo = 5;
+        MAX_AMMO = 10;
         begin = false;
 	}
 	
@@ -79,9 +79,11 @@ public class Notebook : MonoBehaviour, IPlayerWeapon {
             this.GetComponent<PolygonCollider2D>().enabled = true;
             this.GetComponent<SpriteRenderer>().enabled = true;
 
-            if (fireCountdown % 2 == 0 && fireCountdown > 0)
+            Debug.Log(fireCountdown);
+            if (Mathf.Floor(fireCountdown) % 2 == 0 && fireCountdown > 0)
             {
                 SpawnPaper();
+                fireCountdown = 100;
             }
 
             if (countdown <= 0)
@@ -95,9 +97,10 @@ public class Notebook : MonoBehaviour, IPlayerWeapon {
             this.GetComponent<SpriteRenderer>().enabled = false;
             this.GetComponent<Rigidbody2D>().position = playerObject.GetComponent<Rigidbody2D>().position;
         }
-        fireCountdown -= .1f * Time.deltaTime;
+        fireCountdown -= 1f * Time.deltaTime;
         countdown -= 1f * Time.deltaTime;
     }
+
 
     private void SpawnPaper()
     {
@@ -131,4 +134,10 @@ public class Notebook : MonoBehaviour, IPlayerWeapon {
         Destroy(paper3, .75f);
         Destroy(paper4, .75f);
     }
+
+    private void OnDestroy()
+    {
+        SpawnPaper();
+    }
+
 }

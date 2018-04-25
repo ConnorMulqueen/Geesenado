@@ -11,7 +11,7 @@ public class CharacterSelection : MonoBehaviour {
     private string[] professorNames;
     private void Start()
     {
-        professorNames = new string[7]{"Jesse Hartloff", "Carl Alphonce", "Bina Ramurthy", "Atri Rudra", "Satish", "Victor E. Bull", "Ziarek"};
+        professorNames = new string[7]{"Jesse Hartloff", "Carl Alphonce", "Bina Ramamurthy", "Atri Rudra", "Satish", "Victor E. Bull", "Ziarek"};
         characterList = new GameObject[transform.childCount];
 
         for(int i = 0; i < transform.childCount; i++)
