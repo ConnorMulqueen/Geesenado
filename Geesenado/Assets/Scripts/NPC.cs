@@ -131,8 +131,8 @@ namespace Assets.Scripts
             //Die
             if (_health < 0)
             {
-                Destroy(gameObject);
                 PlayerPrefs.SetInt("Score", PlayerPrefs.GetInt("Score") + 5);
+                Destroy(gameObject);
             }
         }
 

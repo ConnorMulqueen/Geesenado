@@ -101,8 +101,12 @@ public class PlayableCharacter : Character
         {
             float stormDmg = 0.1f * Time.deltaTime * 1.0f;
             _health -= stormDmg;
-            GetComponent<AudioSource>().clip = hurtSound;
-            GetComponent<AudioSource>().Play();
+            AudioSource speaker = GetComponent<AudioSource>();
+            if (speaker.isPlaying == false)
+            {
+                speaker.clip = hurtSound;
+                speaker.Play();
+            }
         }
 
         if (_health <= 0f)
@@ -196,9 +200,9 @@ public class PlayableCharacter : Character
         if (collision.gameObject.tag == "Geesenado")
         {
             Debug.Log("YOU Left the storm");
-            inStorm = false;
             GetComponent<AudioSource>().clip = geeseHonk;
             GetComponent<AudioSource>().Play();
+            inStorm = false;
         }
     }
 
