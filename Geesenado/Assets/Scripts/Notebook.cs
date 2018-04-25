@@ -14,6 +14,8 @@ public class Notebook : MonoBehaviour, IPlayerWeapon {
     private float countdown = 0;
     private float fireCountdown = 0;
     private Vector2 pausePosition;
+    public AudioClip dropSound;
+    public AudioClip spraySound;
 
     public string Name { get { return "Notebook";  } }
 
@@ -61,6 +63,8 @@ public class Notebook : MonoBehaviour, IPlayerWeapon {
             this.GetComponent<PolygonCollider2D>().enabled = true;
             this.GetComponent<SpriteRenderer>().enabled = true;
             countdown = 3;
+            GetComponent<AudioSource>().clip = dropSound;
+            GetComponent<AudioSource>().Play();
         }
     }
 
@@ -79,7 +83,6 @@ public class Notebook : MonoBehaviour, IPlayerWeapon {
             this.GetComponent<PolygonCollider2D>().enabled = true;
             this.GetComponent<SpriteRenderer>().enabled = true;
 
-            Debug.Log(fireCountdown);
             if (Mathf.Floor(fireCountdown) % 2 == 0 && fireCountdown > 0)
             {
                 SpawnPaper();
@@ -116,6 +119,8 @@ public class Notebook : MonoBehaviour, IPlayerWeapon {
         Physics2D.IgnoreCollision(paper3.GetComponent<CircleCollider2D>(), GetComponent<PolygonCollider2D>());
         Physics2D.IgnoreCollision(paper4.GetComponent<CircleCollider2D>(), GetComponent<PolygonCollider2D>());
 
+        GetComponent<AudioSource>().clip = spraySound;
+        GetComponent<AudioSource>().Play();
 
         // Compute the velocity to fire the paper prefab
         paper1.GetComponent<Rigidbody2D>().velocity = this.transform.up * MAX_FIREPOWER + new Vector3(5,5, 0) ;

@@ -13,6 +13,8 @@ public class PlayableCharacter : Character
     public Slider healthbar;
     private bool inStorm = false;
     public RuntimeAnimatorController[] animators;
+    public AudioClip geeseHonk;
+    public AudioClip hurtSound;
 
     new void Start()
     {
@@ -99,6 +101,12 @@ public class PlayableCharacter : Character
         {
             float stormDmg = 0.1f * Time.deltaTime * 1.0f;
             _health -= stormDmg;
+            AudioSource speaker = GetComponent<AudioSource>();
+            if (speaker.isPlaying == false)
+            {
+                speaker.clip = hurtSound;
+                speaker.Play();
+            }
         }
 
         if (_health <= 0f)
@@ -178,6 +186,8 @@ public class PlayableCharacter : Character
     {
         if(collision.gameObject.tag == "Geesenado")
         {
+            GetComponent<AudioSource>().clip = geeseHonk;
+            GetComponent<AudioSource>().Play();
             Debug.Log("YOU ARE IN THE STORM! RUN!!");
             float stormDmg = 0.08f * Time.deltaTime * 1.0f;
             _health -= stormDmg;
@@ -190,6 +200,8 @@ public class PlayableCharacter : Character
         if (collision.gameObject.tag == "Geesenado")
         {
             Debug.Log("YOU Left the storm");
+            GetComponent<AudioSource>().clip = geeseHonk;
+            GetComponent<AudioSource>().Play();
             inStorm = false;
         }
     }
@@ -201,6 +213,8 @@ public class PlayableCharacter : Character
             float dmg = collision.gameObject.GetComponent<IDealsDamage>().DealDamage;
             _health -= dmg;
             Debug.Log("Player Health: " + _health);
+            GetComponent<AudioSource>().clip = hurtSound;
+            GetComponent<AudioSource>().Play();
             if (_health <= 0f)
             {
                 SceneManager.LoadScene("gameOver");
