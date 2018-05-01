@@ -1,0 +1,20 @@
+Geesenado Team Meeting Notes
+Location: Baldy 19
+Date: 5/01/18
+Attendance: Kevin, Jared, James
+	Connor(Absent Excused)
+Tasks since last meeting:
+-Beta Release
+-Fixed some map colliders
+
+Topics Discussed:
+- Official release expectations
+- New Map for south campus
+- NPC Weapons 
+
+Summary: Talked more about approaching the Official release. Tasks for each memeber
+
+Tasks for Next Meeting
+- Jared: Add character sprites for remaining characters, NPC Weapons
+- Kevin: South Campus Map
+- James: Implement specific character stat buffs
