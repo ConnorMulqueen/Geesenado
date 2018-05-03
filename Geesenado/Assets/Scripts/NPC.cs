@@ -53,6 +53,7 @@ namespace Assets.Scripts
             _currentlyDodging = false;
 
             _panicRun = false;
+            _geesenadoActive = true;
         }
 
         new void Update()
