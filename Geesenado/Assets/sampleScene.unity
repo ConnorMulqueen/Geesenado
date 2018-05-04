@@ -1952,16 +1952,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 21
       objectReference: {fileID: 0}
-    - target: {fileID: 114219767757113100, guid: a9d3d51eb6d929343b6a34b616402572,
-        type: 2}
-      propertyPath: healthbar
-      value: 
-      objectReference: {fileID: 892137706}
     - target: {fileID: 114858786231184744, guid: a9d3d51eb6d929343b6a34b616402572,
         type: 2}
       propertyPath: staminaBar
       value: 
       objectReference: {fileID: 430403019}
+    - target: {fileID: 114219767757113100, guid: a9d3d51eb6d929343b6a34b616402572,
+        type: 2}
+      propertyPath: healthbar
+      value: 
+      objectReference: {fileID: 892137706}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a9d3d51eb6d929343b6a34b616402572, type: 2}
   m_IsPrefabParent: 0
