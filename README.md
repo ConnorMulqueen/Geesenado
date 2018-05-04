@@ -6,6 +6,8 @@
 
 [Link to our alpha showcase here!](https://www.youtube.com/watch?v=yjcSNO0zn5w)
 
+[Link to our official release showcase here!](https://www.youtube.com/watch?v=udatb0Qcmq0)
+
 [Link to our landing page here!](https://connormulqueen.github.io/Geesenado/)
 
 ## Project Description:
