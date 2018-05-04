@@ -49,10 +49,6 @@ public class CharacterSelection : MonoBehaviour {
     }
     public void ConfirmButton()
     {
-        if(index > 2)
-        {
-            index = 2;
-        }
         PlayerPrefs.SetInt("CharacterSelected", index);
         SceneManager.LoadScene("sampleScene");
     }

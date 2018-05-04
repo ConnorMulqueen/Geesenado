@@ -27,10 +27,6 @@ public class PlayableCharacter : Character
 
         int characterInt = PlayerPrefs.GetInt("CharacterSelected");
         GetComponent<Animator>().runtimeAnimatorController = animators[characterInt];
-        if(characterInt > animators.Length)
-        {
-            GetComponent<Animator>().runtimeAnimatorController = animators[animators.Length - 1];
-        }
         healthbar.value = maxHealth;
 
     }
