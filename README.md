@@ -3,6 +3,9 @@
 [![Join the chat at https://gitter.im/Geesenado/Lobby](https://badges.gitter.im/Geesenado/Lobby.svg)](https://gitter.im/Geesenado/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [Link to our prototype showcase here!](https://www.youtube.com/watch?v=ZycyCAmxYz4)
+
+[Link to our official release showcase here!](https://www.youtube.com/watch?v=udatb0Qcmq0)
+
 ## Project Description:
 ### MVP:
 
